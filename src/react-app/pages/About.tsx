@@ -2,6 +2,7 @@ import { motion } from 'framer-motion';
 import { ArrowRight, Sparkles, Users, Heart, Shield, Zap, Target } from 'lucide-react';
 import Navigation from '@/react-app/components/Navigation';
 import Footer from '@/react-app/components/Footer';
+import EssenceBento from '@/react-app/components/EssenceBento';
 
 function Section({ children, className = "" }: { children: React.ReactNode; className?: string }) {
   return (
@@ -95,51 +96,8 @@ export default function About() {
         </div>
       </Section>
 
-      {/* Manifesto Section */}
-      <Section className="py-20 bg-gradient-to-b from-green-900 via-black to-gray-900">
-        <div className="container mx-auto px-6">
-          <div className="max-w-4xl mx-auto text-center mb-16">
-            <h2 className="text-4xl lg:text-6xl font-bold text-white mb-12">
-              A essência está no{' '}
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-green-400 to-green-600">
-                equilíbrio
-              </span>
-            </h2>
-          </div>
-
-          <div className="grid md:grid-cols-2 gap-12 max-w-6xl mx-auto">
-            <div className="text-center">
-              <div className="text-6xl font-bold text-green-400 mb-6">Tree</div>
-              <h3 className="text-2xl font-bold text-white mb-4">representa as raízes</h3>
-              <p className="text-white/70 leading-relaxed text-lg mb-6">
-                Estratégia, estrutura e base sólida.
-                <br />
-                É a confiança de que tudo o que construímos precisa resistir ao tempo.
-              </p>
-            </div>
-
-            <div className="text-center">
-              <div className="text-6xl font-bold text-green-400 mb-6">Kinetic</div>
-              <h3 className="text-2xl font-bold text-white mb-4">representa o movimento</h3>
-              <p className="text-white/70 leading-relaxed text-lg mb-6">
-                Inovação, energia e adaptação constante.
-                <br />
-                É o impulso que faz marcas florescerem no ambiente digital.
-              </p>
-            </div>
-          </div>
-
-          <div className="text-center mt-16 max-w-3xl mx-auto">
-            <p className="text-xl text-white/90 leading-relaxed">
-              A Kinetree existe para unir esses dois mundos: <strong className="text-green-400">o estável e o dinâmico</strong>.
-              <br />
-              Somos o elo entre o que é firme e o que se move.
-              <br />
-              <strong className="text-green-400">Entre o hoje e o futuro.</strong>
-            </p>
-          </div>
-        </div>
-      </Section>
+      {/* Essence Bento Section - Substituindo a antiga seção */}
+      <EssenceBento />
 
       {/* Nossa História */}
       <Section className="py-20 bg-gradient-to-b from-gray-900 to-black">
@@ -219,35 +177,30 @@ export default function About() {
               icon={<Users className="w-8 h-8 text-black" />}
               title="Parceria Estratégica"
               description="Seu briefing é o ponto de partida, não o limite. Trabalhamos lado a lado com você para entender desafios e encontrar oportunidades reais de crescimento."
-              
             />
             
             <PillarCard
               icon={<Zap className="w-8 h-8 text-black" />}
               title="Excelência Técnica"
               description="Somos obcecados por qualidade. Da performance ao design, da segurança ao SEO, cada detalhe é feito com precisão e propósito."
-              
             />
             
             <PillarCard
               icon={<Heart className="w-8 h-8 text-black" />}
               title="Design Consciente"
               description="A beleza importa, mas a intenção importa mais. Cada cor, forma e transição é criada para gerar impacto e conexão."
-              
             />
             
             <PillarCard
               icon={<Shield className="w-8 h-8 text-black" />}
               title="Transparência Absoluta"
               description="Acreditamos que confiança é construída com clareza. Você acompanha cada etapa, cada entrega e cada decisão."
-              
             />
             
             <PillarCard
               icon={<Target className="w-8 h-8 text-black" />}
               title="Inovação Contínua"
               description="O digital muda todos os dias — e nós também. Buscamos sempre novas soluções, linguagens e ferramentas para manter nossos clientes à frente."
-              
             />
           </div>
         </div>

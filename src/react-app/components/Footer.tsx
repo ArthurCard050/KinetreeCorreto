@@ -1,5 +1,6 @@
 import { motion } from 'framer-motion';
 import { Mail, Phone, MapPin, Instagram, Linkedin, Twitter, Github } from 'lucide-react';
+import Logo from '@/react-app/components/Logo';
 
 export default function Footer() {
   const currentYear = new Date().getFullYear();
@@ -53,12 +54,7 @@ export default function Footer() {
             transition={{ duration: 0.4 }}
             viewport={{ once: true }}
           >
-            <motion.h3
-              className="text-2xl font-bold text-white mb-4"
-              whileHover={{ scale: 1.05 }}
-            >
-              Kinetree
-            </motion.h3>
+            <Logo />
             <p className="text-white/70 leading-relaxed mb-6">
               Construímos estruturas vivas para o seu crescimento digital. Design que move, código que estrutura.
             </p>

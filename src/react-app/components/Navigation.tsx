@@ -1,6 +1,7 @@
 import { motion, useScroll, useTransform } from 'framer-motion';
 import { useState } from 'react';
 import { Menu, X } from 'lucide-react';
+import Logo from '@/react-app/components/Logo';
 
 export default function Navigation() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -30,14 +31,7 @@ export default function Navigation() {
             style={{ backgroundColor }}
           >
             <div className="flex items-center justify-between">
-              {/* Logo */}
-              <motion.a
-                className="text-white font-bold text-xl"
-                whileHover={{ scale: 1.05 }}
-                transition={{ duration: 0.2 }}
-              >
-                Kinetree
-              </motion.a>
+              <Logo />
               
               {/* Desktop Navigation */}
               <div className="hidden md:flex items-center space-x-8">
