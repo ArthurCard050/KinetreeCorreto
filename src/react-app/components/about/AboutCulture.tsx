@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion';
-import { useOptimizedAnimation, optimizedVariants } from '../../hooks/useOptimizedAnimation';
+import { optimizedVariants } from '../../hooks/useOptimizedAnimation';
 
 export default function AboutCulture() {
   return (

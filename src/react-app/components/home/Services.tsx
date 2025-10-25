@@ -1,7 +1,7 @@
 import { motion, AnimatePresence } from 'framer-motion';
 import { useState } from 'react';
 import { useScrollLock } from '../../hooks/useScrollLock';
-import { useOptimizedAnimation, optimizedVariants } from '../../hooks/useOptimizedAnimation';
+import { optimizedVariants } from '../../hooks/useOptimizedAnimation';
 import {
   Building,
   Target,
