@@ -1,5 +1,6 @@
 import { motion } from 'framer-motion';
 import { ArrowRight, Sparkles } from 'lucide-react';
+import { optimizedVariants } from '../../hooks/useOptimizedAnimation';
 
 export default function FinalCTA() {
   return (
@@ -37,10 +38,7 @@ export default function FinalCTA() {
       <div className="container mx-auto px-6 relative z-10">
         <div className="max-w-4xl mx-auto text-center">
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.4 }}
-            viewport={{ once: true }}
+            {...optimizedVariants.slideUp}
             className="mb-8"
           >
             <motion.div
@@ -56,10 +54,8 @@ export default function FinalCTA() {
 
             <motion.h2
               className="text-5xl lg:text-7xl font-bold text-white mb-6 leading-tight"
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.3 }}
-              viewport={{ once: true }}
+              {...optimizedVariants.slideUp}
+              transition={{ ...optimizedVariants.slideUp.transition, delay: 0.3 }}
             >
               Seu futuro digital{' '}
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-green-400 to-green-600">
@@ -69,10 +65,8 @@ export default function FinalCTA() {
 
             <motion.p
               className="text-xl lg:text-2xl text-white/80 mb-12 leading-relaxed max-w-3xl mx-auto"
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.4 }}
-              viewport={{ once: true }}
+              {...optimizedVariants.slideUp}
+              transition={{ ...optimizedVariants.slideUp.transition, delay: 0.4 }}
             >
               Deixe-nos construir as raízes do seu crescimento online.
               <br />
@@ -84,10 +78,8 @@ export default function FinalCTA() {
 
           <motion.div
             className="flex flex-col sm:flex-row gap-6 justify-center items-center"
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.4, delay: 0.3 }}
-            viewport={{ once: true }}
+            {...optimizedVariants.slideUp}
+            transition={{ ...optimizedVariants.slideUp.transition, delay: 0.3 }}
           >
             <motion.button
               className="group bg-gradient-to-r from-green-500 to-green-400 hover:from-green-400 hover:to-green-300 text-black px-10 py-5 rounded-full font-bold text-lg transition-all duration-300 relative overflow-hidden"
@@ -131,10 +123,8 @@ export default function FinalCTA() {
 
           <motion.div
             className="mt-16 grid md:grid-cols-3 gap-8 text-center"
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.4, delay: 0.4 }}
-            viewport={{ once: true }}
+            {...optimizedVariants.slideUp}
+            transition={{ ...optimizedVariants.slideUp.transition, delay: 0.4 }}
           >
             {[
               { title: "Consulta Gratuita", subtitle: "Análise completa do seu projeto" },
@@ -144,10 +134,8 @@ export default function FinalCTA() {
               <motion.div
                 key={index}
                 className="text-center"
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, delay: 1 + index * 0.1 }}
-                viewport={{ once: true }}
+                {...optimizedVariants.slideUp}
+                transition={{ ...optimizedVariants.slideUp.transition, delay: 1 + index * 0.1 }}
               >
                 <h4 className="text-white font-semibold mb-2">{item.title}</h4>
                 <p className="text-white/60 text-sm">{item.subtitle}</p>

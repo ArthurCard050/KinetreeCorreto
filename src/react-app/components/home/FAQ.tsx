@@ -1,5 +1,6 @@
 import { motion } from 'framer-motion';
 import { useState } from 'react';
+import { optimizedVariants } from '../../hooks/useOptimizedAnimation';
 
 interface FAQItemProps {
   question: string;
@@ -13,10 +14,8 @@ function FAQItem({ question, answer, index }: FAQItemProps) {
   return (
     <motion.div
       className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl overflow-hidden"
-      initial={{ opacity: 0, y: 20 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.6, delay: index * 0.1 }}
-      viewport={{ once: true }}
+      {...optimizedVariants.slideUp}
+      transition={{ ...optimizedVariants.slideUp.transition, delay: index * 0.1 }}
     >
       <button
         className="w-full p-6 text-left flex items-center justify-between hover:bg-white/5 transition-colors duration-200"
@@ -72,10 +71,7 @@ export default function ContactFAQ() {
       <div className="container mx-auto px-6">
         <motion.div
           className="text-center mb-16"
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
-          viewport={{ once: true }}
+          {...optimizedVariants.slideUp}
         >
           <h2 className="text-4xl lg:text-5xl font-bold text-white mb-6">
             Antes de enviar, talvez a gente já possa responder.

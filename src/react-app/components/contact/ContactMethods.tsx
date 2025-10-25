@@ -1,5 +1,6 @@
 import { motion } from 'framer-motion';
 import { MessageSquare, Mail, MapPin, Calendar } from 'lucide-react';
+import { optimizedVariants } from '../../hooks/useOptimizedAnimation';
 
 export default function ContactMethods() {
   const contactMethods = [
@@ -34,10 +35,7 @@ export default function ContactMethods() {
       <div className="container mx-auto px-6">
         <motion.div
           className="text-center mb-12"
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
-          viewport={{ once: true }}
+          {...optimizedVariants.slideUp}
         >
           <h2 className="text-4xl lg:text-5xl font-bold text-white mb-4">
             Prefere falar{' '}
@@ -58,10 +56,8 @@ export default function ContactMethods() {
             <motion.div
               key={index}
               className="bg-gradient-to-br from-white/5 to-white/10 backdrop-blur-sm border border-white/10 rounded-3xl p-6 hover:from-white/10 hover:to-white/15 transition-all duration-300 text-center"
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: method.delay }}
-              viewport={{ once: true }}
+              {...optimizedVariants.slideUp}
+              transition={{ ...optimizedVariants.slideUp.transition, delay: method.delay }}
               whileHover={{ scale: 1.05 }}
             >
               <div className="w-16 h-16 bg-gradient-to-br from-green-400 to-green-600 rounded-2xl flex items-center justify-center mx-auto mb-4">

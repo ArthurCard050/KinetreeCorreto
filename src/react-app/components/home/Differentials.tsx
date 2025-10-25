@@ -2,6 +2,7 @@ import { motion } from 'framer-motion';
 import { Zap, Shield, Target, TrendingUp, Heart } from 'lucide-react';
 import { DotLottieReact } from '@lottiefiles/dotlottie-react';
 import React from 'react';
+import { optimizedVariants } from '../../hooks/useOptimizedAnimation';
 
 interface DifferentialProps {
   icon: React.ReactNode;
@@ -33,13 +34,12 @@ function TargetAnimation() {
 }
 
 function DifferentialItem({ icon, title, delay = 0 }: DifferentialProps) {
+
   return (
     <motion.div
       className="flex items-center space-x-4 group"
-      initial={{ opacity: 0, x: -20 }}
-      whileInView={{ opacity: 1, x: 0 }}
-      transition={{ duration: 0.4, delay }}
-      viewport={{ once: true }}
+      {...optimizedVariants.slideLeft}
+      transition={{ ...optimizedVariants.slideLeft.transition, delay }}
     >
       <motion.div
         className="w-12 h-12 bg-gradient-to-br from-green-400 to-green-600 rounded-xl flex items-center justify-center group-hover:scale-110 transition-transform duration-300"
@@ -115,10 +115,7 @@ export default function Differentials() {
       <div className="container mx-auto px-6 relative z-10">
         <motion.div
           className="text-center mb-16"
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.4 }}
-          viewport={{ once: true }}
+          {...optimizedVariants.slideUp}
         >
           <h2 className="text-4xl lg:text-6xl font-bold text-white mb-6">
             Por que{' '}
@@ -160,10 +157,8 @@ export default function Differentials() {
 
               <motion.div
                 className="text-left"
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.8, delay: 1 }}
-                viewport={{ once: true }}
+                {...optimizedVariants.slideUp}
+                transition={{ ...optimizedVariants.slideUp.transition, delay: 0.3 }}
               >
                 <div className="bg-gradient-to-r from-green-400/10 to-green-600/10 backdrop-blur-sm border border-green-400/20 rounded-2xl p-6 lg:p-8">
                   <motion.div

@@ -1,6 +1,7 @@
 import { motion, AnimatePresence } from 'framer-motion';
 import { useState, useEffect } from 'react';
 import { Star, Quote, ChevronLeft, ChevronRight } from 'lucide-react';
+import { optimizedVariants } from '../../hooks/useOptimizedAnimation';
 
 interface TestimonialProps {
   name: string;
@@ -111,10 +112,7 @@ export default function Testimonials() {
       <div className="container mx-auto px-6">
         <motion.div
           className="text-center mb-16"
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.4 }}
-          viewport={{ once: true }}
+          {...optimizedVariants.slideUp}
         >
           <h2 className="text-4xl lg:text-6xl font-bold text-white mb-6">
             O que nossos{' '}

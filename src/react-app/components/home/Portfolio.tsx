@@ -1,6 +1,7 @@
 import { motion } from 'framer-motion';
 import { useState } from 'react';
 import { ExternalLink } from 'lucide-react';
+import { optimizedVariants } from '../../hooks/useOptimizedAnimation';
 
 interface ProjectProps {
   title: string;
@@ -16,10 +17,8 @@ function ProjectCard({ title, category, description, image, delay = 0 }: Project
   return (
     <motion.div
       className="relative group cursor-pointer overflow-hidden rounded-3xl bg-gradient-to-br from-gray-800 to-gray-900 border border-white/10"
-      initial={{ opacity: 0, y: 20 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.4, delay }}
-      viewport={{ once: true }}
+      {...optimizedVariants.slideUp}
+      transition={{ ...optimizedVariants.slideUp.transition, delay }}
       whileHover={{ scale: 1.02 }}
       onHoverStart={() => setIsHovered(true)}
       onHoverEnd={() => setIsHovered(false)}
@@ -149,10 +148,7 @@ export default function Portfolio() {
       <div className="container mx-auto px-6">
         <motion.div
           className="text-center mb-16"
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.4 }}
-          viewport={{ once: true }}
+          {...optimizedVariants.slideUp}
         >
           <h2 className="text-4xl lg:text-6xl font-bold text-white mb-6">
             Nosso{' '}
@@ -180,10 +176,8 @@ export default function Portfolio() {
 
         <motion.div
           className="text-center"
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.4, delay: 0.3 }}
-          viewport={{ once: true }}
+          {...optimizedVariants.slideUp}
+          transition={{ ...optimizedVariants.slideUp.transition, delay: 0.3 }}
         >
           <motion.button
             className="bg-gradient-to-r from-green-500 to-green-400 hover:from-green-400 hover:to-green-300 text-black px-8 py-4 rounded-full font-semibold text-lg transition-all duration-300"

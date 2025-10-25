@@ -1,6 +1,7 @@
 import { motion } from 'framer-motion';
 import { Mail, Phone, MapPin, Instagram, Linkedin, Twitter, Github } from 'lucide-react';
 import Logo from './Logo';
+import { optimizedVariants } from '../../hooks/useOptimizedAnimation';
 
 export default function Footer() {
   const currentYear = new Date().getFullYear();
@@ -49,10 +50,7 @@ export default function Footer() {
           {/* Logo and description */}
           <motion.div
             className="md:col-span-1"
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.4 }}
-            viewport={{ once: true }}
+            {...optimizedVariants.slideUp}
           >
             <Logo />
             <p className="text-white/70 leading-relaxed mb-6">
@@ -83,10 +81,8 @@ export default function Footer() {
           {footerSections.map((section, sectionIndex) => (
             <motion.div
               key={section.title}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: sectionIndex * 0.1 }}
-              viewport={{ once: true }}
+              {...optimizedVariants.slideUp}
+              transition={{ ...optimizedVariants.slideUp.transition, delay: sectionIndex * 0.1 }}
             >
               <h4 className="text-white font-semibold mb-6">{section.title}</h4>
               <ul className="space-y-4">
@@ -116,10 +112,8 @@ export default function Footer() {
         {/* Bottom section */}
         <motion.div
           className="border-t border-white/10 mt-16 pt-8 flex flex-col md:flex-row justify-between items-center"
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.4, delay: 0.4 }}
-          viewport={{ once: true }}
+          {...optimizedVariants.slideUp}
+          transition={{ ...optimizedVariants.slideUp.transition, delay: 0.4 }}
         >
           <div className="text-white/60 text-sm mb-4 md:mb-0">
             <motion.span

@@ -1,6 +1,7 @@
 import { motion } from 'framer-motion';
 import { useState } from 'react';
 import { CheckCircle, Send, Clock, Shield } from 'lucide-react';
+import { optimizedVariants } from '../../hooks/useOptimizedAnimation';
 
 export default function ContactForm() {
   const [formData, setFormData] = useState({
@@ -52,10 +53,7 @@ export default function ContactForm() {
       <div className="container mx-auto px-6">
         <motion.div
           className="text-center mb-16"
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
-          viewport={{ once: true }}
+          {...optimizedVariants.slideUp}
         >
           <h2 className="text-4xl lg:text-5xl font-bold text-white mb-6">
             Conte um pouco sobre o seu projeto.
@@ -65,10 +63,8 @@ export default function ContactForm() {
         <div className="max-w-4xl mx-auto">
           <motion.div
             className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-3xl p-8 lg:p-12"
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.2 }}
-            viewport={{ once: true }}
+            {...optimizedVariants.slideUp}
+            transition={{ ...optimizedVariants.slideUp.transition, delay: 0.2 }}
           >
             {isSubmitted ? (
               <motion.div

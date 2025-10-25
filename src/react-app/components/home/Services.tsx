@@ -1,6 +1,7 @@
 import { motion, AnimatePresence } from 'framer-motion';
 import { useState } from 'react';
 import { useScrollLock } from '../../hooks/useScrollLock';
+import { useOptimizedAnimation, optimizedVariants } from '../../hooks/useOptimizedAnimation';
 import {
   Building,
   Target,
@@ -37,10 +38,8 @@ function ServiceCard({ service, index, onOpenModal }: ServiceCardProps) {
   return (
     <motion.div
       className="bg-gradient-to-br from-white/5 to-white/10 backdrop-blur-sm border border-white/10 rounded-3xl p-8 hover:from-white/10 hover:to-white/15 transition-all duration-500 group relative overflow-hidden cursor-pointer"
-      initial={{ opacity: 0, y: 20 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.4, delay: index * 0.1 }}
-      viewport={{ once: true }}
+      {...optimizedVariants.slideUp}
+      transition={{ ...optimizedVariants.slideUp.transition, delay: index * 0.1 }}
       whileHover={{
         scale: 1.02,
         boxShadow: "0 20px 60px rgba(34, 197, 94, 0.15)"
@@ -508,10 +507,7 @@ export default function Services() {
       <div className="container mx-auto px-6 relative z-10">
         <motion.div
           className="text-center mb-16"
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.4 }}
-          viewport={{ once: true }}
+          {...optimizedVariants.slideUp}
         >
           <h2 className="text-4xl lg:text-6xl font-bold text-white mb-6">
             Nossos{' '}

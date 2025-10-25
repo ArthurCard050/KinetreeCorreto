@@ -5,5 +5,5 @@ export * from './shared';
 export * from './home';
 export * from './about';
 export * from './projects';
-export * from './services';
+// export * from './services';
 export * from './contact';

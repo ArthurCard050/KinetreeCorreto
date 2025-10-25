@@ -2,6 +2,7 @@ import { motion } from 'framer-motion';
 import { useState } from 'react';
 import { ExternalLink } from 'lucide-react';
 import ProjectModal from './ProjectsModal';
+import { optimizedVariants } from '../../hooks/useOptimizedAnimation';
 
 export default function FeaturedProjects() {
   const [selectedProject, setSelectedProject] = useState<{ url: string; title: string } | null>(null);
@@ -53,10 +54,7 @@ export default function FeaturedProjects() {
         <div className="container mx-auto px-6">
           <motion.div
             className="text-center mb-16"
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-            viewport={{ once: true }}
+            {...optimizedVariants.slideUp}
           >
             <h2 className="text-4xl lg:text-6xl font-bold text-white mb-6">
               Projetos em{' '}
@@ -76,10 +74,8 @@ export default function FeaturedProjects() {
               <motion.div
                 key={index}
                 className="relative group cursor-pointer overflow-hidden rounded-3xl bg-gradient-to-br from-gray-800 to-gray-900 border border-white/10"
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, delay: index * 0.1 }}
-                viewport={{ once: true }}
+                {...optimizedVariants.slideUp}
+                transition={{ ...optimizedVariants.slideUp.transition, delay: index * 0.1 }}
                 whileHover={{ scale: 1.02 }}
                 onHoverStart={() => setHoveredIndex(index)}
                 onHoverEnd={() => setHoveredIndex(null)}

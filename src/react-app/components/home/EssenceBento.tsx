@@ -1,6 +1,7 @@
 import { motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
 import { useState } from 'react';
+import { optimizedVariants } from '../../hooks/useOptimizedAnimation';
 import { 
   Network, 
   GitBranch, 
@@ -519,10 +520,7 @@ export default function EssenceBento() {
       <div className="container mx-auto px-6">
         <motion.div
           className="text-center mb-16"
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
-          viewport={{ once: true }}
+          {...optimizedVariants.slideUp}
         >
           <h2 className="text-4xl lg:text-6xl font-bold text-white mb-6">
             A essência está no{' '}
@@ -552,10 +550,8 @@ export default function EssenceBento() {
 
         <motion.div
           className="text-center mt-16 max-w-3xl mx-auto"
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.4 }}
-          viewport={{ once: true }}
+          {...optimizedVariants.slideUp}
+          transition={{ ...optimizedVariants.slideUp.transition, delay: 0.4 }}
         >
           <div className="bg-gradient-to-r from-green-400/10 to-green-600/10 backdrop-blur-sm border border-green-400/20 rounded-2xl p-8">
             <motion.p

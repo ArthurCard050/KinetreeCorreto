@@ -1,4 +1,5 @@
 import { motion } from 'framer-motion';
+import { optimizedVariants } from '../../hooks/useOptimizedAnimation';
 
 interface ClientLogoProps {
   name: string;
@@ -37,10 +38,7 @@ export default function ClientsMarquee() {
       <div className="relative z-10 max-w-7xl mx-auto mb-12">
         <motion.div
           className="text-center"
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.4 }}
-          viewport={{ once: true }}
+          {...optimizedVariants.slideUp}
         >
           <h2 className="text-3xl md:text-5xl font-bold mb-4 text-white">
             Parceiros de{' '}

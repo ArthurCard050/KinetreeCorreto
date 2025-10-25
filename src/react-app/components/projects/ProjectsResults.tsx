@@ -1,4 +1,5 @@
 import { motion } from 'framer-motion';
+import { optimizedVariants } from '../../hooks/useOptimizedAnimation';
 
 export default function ProjectsResults() {
   const results = [
@@ -13,10 +14,7 @@ export default function ProjectsResults() {
       <div className="container mx-auto px-6">
         <motion.div
           className="text-center mb-16"
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
-          viewport={{ once: true }}
+          {...optimizedVariants.slideUp}
         >
           <h2 className="text-4xl lg:text-6xl font-bold text-white mb-6">
             Mais do que design,{' '}
@@ -34,10 +32,8 @@ export default function ProjectsResults() {
             <motion.div
               key={index}
               className="bg-gradient-to-br from-white/5 to-white/10 backdrop-blur-sm border border-white/10 rounded-3xl p-8 text-center group hover:from-white/10 hover:to-white/15 transition-all duration-500"
-              initial={{ opacity: 0, scale: 0.9 }}
-              whileInView={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 0.6, delay: index * 0.1 }}
-              viewport={{ once: true }}
+              {...optimizedVariants.scale}
+              transition={{ ...optimizedVariants.scale.transition, delay: index * 0.1 }}
               whileHover={{ 
                 scale: 1.05,
                 boxShadow: "0 20px 60px rgba(34, 197, 94, 0.2)" 
@@ -45,10 +41,8 @@ export default function ProjectsResults() {
             >
               <motion.div
                 className="text-5xl font-bold text-green-400 mb-4"
-                initial={{ scale: 0.8, opacity: 0 }}
-                whileInView={{ scale: 1, opacity: 1 }}
-                transition={{ duration: 0.6, delay: index * 0.1 + 0.3 }}
-                viewport={{ once: true }}
+                {...optimizedVariants.scale}
+                transition={{ ...optimizedVariants.scale.transition, delay: index * 0.1 + 0.3 }}
               >
                 {result.value}
               </motion.div>
@@ -61,10 +55,8 @@ export default function ProjectsResults() {
 
         <motion.div
           className="text-center"
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.6 }}
-          viewport={{ once: true }}
+          {...optimizedVariants.slideUp}
+          transition={{ ...optimizedVariants.slideUp.transition, delay: 0.6 }}
         >
           <p className="text-2xl font-semibold text-white max-w-3xl mx-auto">
             <span className="text-green-400">Performance</span> é a base.{' '}

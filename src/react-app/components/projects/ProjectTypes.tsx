@@ -1,5 +1,6 @@
 import { motion } from 'framer-motion';
 import { Globe, Target, ShoppingBag, Palette, Code } from 'lucide-react';
+import { optimizedVariants } from '../../hooks/useOptimizedAnimation';
 
 export default function ProjectTypes() {
   const types = [
@@ -35,10 +36,7 @@ export default function ProjectTypes() {
       <div className="container mx-auto px-6">
         <motion.div
           className="text-center mb-16"
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
-          viewport={{ once: true }}
+          {...optimizedVariants.slideUp}
         >
           <h2 className="text-4xl lg:text-6xl font-bold text-white mb-6">
             Do institucional ao imersivo:{' '}
@@ -59,10 +57,8 @@ export default function ProjectTypes() {
             <motion.div
               key={index}
               className="bg-gradient-to-br from-white/5 to-white/10 backdrop-blur-sm border border-white/10 rounded-3xl p-8 hover:from-white/10 hover:to-white/15 transition-all duration-500 group"
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: index * 0.1 }}
-              viewport={{ once: true }}
+              {...optimizedVariants.slideUp}
+              transition={{ ...optimizedVariants.slideUp.transition, delay: index * 0.1 }}
               whileHover={{ 
                 scale: 1.05, 
                 boxShadow: "0 20px 60px rgba(34, 197, 94, 0.15)" 

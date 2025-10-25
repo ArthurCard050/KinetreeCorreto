@@ -1,4 +1,5 @@
 import { motion } from 'framer-motion';
+import { useOptimizedAnimation, optimizedVariants } from '../../hooks/useOptimizedAnimation';
 
 export default function AboutCulture() {
   return (
@@ -34,10 +35,8 @@ export default function AboutCulture() {
             {/* Card 1 - Designer */}
             <motion.div
               className="group relative cursor-pointer"
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.1 }}
-              viewport={{ once: true }}
+              {...optimizedVariants.slideUp}
+              transition={{ ...optimizedVariants.slideUp.transition, delay: 0.1 }}
             >
               <div className="relative overflow-hidden rounded-3xl border border-green-400/20 hover:border-green-400/60 transition-all duration-500 group-hover:scale-[1.03] group-hover:shadow-2xl group-hover:shadow-green-400/25">
                 {/* Full Image Container */}
@@ -76,17 +75,15 @@ export default function AboutCulture() {
             {/* Card 2 - Developer */}
             <motion.div
               className="group relative cursor-pointer"
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.2 }}
-              viewport={{ once: true }}
+              {...optimizedVariants.slideUp}
+              transition={{ ...optimizedVariants.slideUp.transition, delay: 0.2 }}
             >
               <div className="relative overflow-hidden rounded-3xl border border-green-400/20 hover:border-green-400/60 transition-all duration-500 group-hover:scale-[1.03] group-hover:shadow-2xl group-hover:shadow-green-400/25">
                 {/* Full Image Container */}
                 <div className="aspect-[4/5] relative overflow-hidden">
                   {/* Image */}
                   <img
-                    src="/Mylena.webp"
+                    src="/mylena2.webp"
                     alt="Mylena - Kinetree"
                     className="w-full h-full object-cover scale-110 group-hover:scale-125 transition-transform duration-700"
                   />
@@ -118,10 +115,8 @@ export default function AboutCulture() {
             {/* Card 3 - Strategist */}
             <motion.div
               className="group relative cursor-pointer"
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.3 }}
-              viewport={{ once: true }}
+              {...optimizedVariants.slideUp}
+              transition={{ ...optimizedVariants.slideUp.transition, delay: 0.3 }}
             >
               <div className="relative overflow-hidden rounded-3xl border border-green-400/20 hover:border-green-400/60 transition-all duration-500 group-hover:scale-[1.03] group-hover:shadow-2xl group-hover:shadow-green-400/25">
                 {/* Full Image Container */}
