@@ -44,18 +44,33 @@ export default function Navigation() {
                   Sobre
                   <div className="absolute -bottom-1 left-0 w-0 h-0.5 bg-green-400 group-hover:w-full transition-all duration-200" />
                 </motion.a>
-                {['Serviços', 'Projetos', 'Contato'].map((item) => (
-                  <motion.a
-                    key={item}
-                    href={`#${item.toLowerCase()}`}
-                    className="text-white/80 hover:text-white transition-colors duration-200 relative group"
-                    whileHover={{ y: -1 }}
-                    transition={{ duration: 0.2 }}
-                  >
-                    {item}
-                    <div className="absolute -bottom-1 left-0 w-0 h-0.5 bg-green-400 group-hover:w-full transition-all duration-200" />
-                  </motion.a>
-                ))}
+                <motion.a
+                  href="/projetos"
+                  className="text-white/80 hover:text-white transition-colors duration-200 relative group"
+                  whileHover={{ y: -1 }}
+                  transition={{ duration: 0.2 }}
+                >
+                  Projetos
+                  <div className="absolute -bottom-1 left-0 w-0 h-0.5 bg-green-400 group-hover:w-full transition-all duration-200" />
+                </motion.a>
+                <motion.a
+                  href="#servicos"
+                  className="text-white/80 hover:text-white transition-colors duration-200 relative group"
+                  whileHover={{ y: -1 }}
+                  transition={{ duration: 0.2 }}
+                >
+                  Serviços
+                  <div className="absolute -bottom-1 left-0 w-0 h-0.5 bg-green-400 group-hover:w-full transition-all duration-200" />
+                </motion.a>
+                <motion.a
+                  href="/contato"
+                  className="text-white/80 hover:text-white transition-colors duration-200 relative group"
+                  whileHover={{ y: -1 }}
+                  transition={{ duration: 0.2 }}
+                >
+                  Contato
+                  <div className="absolute -bottom-1 left-0 w-0 h-0.5 bg-green-400 group-hover:w-full transition-all duration-200" />
+                </motion.a>
               </div>
               
               {/* Desktop CTA Button */}
@@ -101,19 +116,36 @@ export default function Navigation() {
             >
               Sobre
             </motion.a>
-            {['Serviços', 'Projetos', 'Contato'].map((item, index) => (
-              <motion.a
-                key={item}
-                href={`#${item.toLowerCase()}`}
-                className="text-white text-2xl font-semibold hover:text-green-400 transition-colors duration-200"
-                initial={{ y: 20, opacity: 0 }}
-                animate={{ y: 0, opacity: 1 }}
-                transition={{ duration: 0.2, delay: (index + 1) * 0.1 }}
-                onClick={toggleMobileMenu}
-              >
-                {item}
-              </motion.a>
-            ))}
+            <motion.a
+              href="#servicos"
+              className="text-white text-2xl font-semibold hover:text-green-400 transition-colors duration-200"
+              initial={{ y: 20, opacity: 0 }}
+              animate={{ y: 0, opacity: 1 }}
+              transition={{ duration: 0.2, delay: 1 * 0.1 }}
+              onClick={toggleMobileMenu}
+            >
+              Serviços
+            </motion.a>
+            <motion.a
+              href="/projetos"
+              className="text-white text-2xl font-semibold hover:text-green-400 transition-colors duration-200"
+              initial={{ y: 20, opacity: 0 }}
+              animate={{ y: 0, opacity: 1 }}
+              transition={{ duration: 0.2, delay: 2 * 0.1 }}
+              onClick={toggleMobileMenu}
+            >
+              Projetos
+            </motion.a>
+            <motion.a
+              href="/contato"
+              className="text-white text-2xl font-semibold hover:text-green-400 transition-colors duration-200"
+              initial={{ y: 20, opacity: 0 }}
+              animate={{ y: 0, opacity: 1 }}
+              transition={{ duration: 0.2, delay: 3 * 0.1 }}
+              onClick={toggleMobileMenu}
+            >
+              Contato
+            </motion.a>
             <motion.button
               className="bg-green-500 hover:bg-green-400 text-black px-8 py-3 rounded-full font-semibold text-lg transition-colors duration-200 mt-4"
               initial={{ y: 20, opacity: 0 }}
