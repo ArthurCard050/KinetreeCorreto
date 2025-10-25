@@ -118,13 +118,14 @@ export default function FinalCTA() {
             </motion.button>
 
             <motion.div
-              className="text-white/60 text-sm"
+              className="text-white/60 text-sm flex items-center justify-center space-x-2"
               initial={{ opacity: 0 }}
               whileInView={{ opacity: 1 }}
               transition={{ duration: 0.8, delay: 0.8 }}
               viewport={{ once: true }}
             >
-              ✨ Resposta em até 2 horas úteis
+              <Sparkles className="w-4 h-4 text-green-400" />
+              <span>Resposta em até 2 horas úteis</span>
             </motion.div>
           </motion.div>
 

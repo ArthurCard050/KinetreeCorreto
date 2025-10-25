@@ -1,11 +1,11 @@
-import Navigation from '@/react-app/components/Navigation';
-import Footer from '@/react-app/components/Footer';
-import FinalCTA from '@/react-app/components/FinalCTA';
-import Testimonials from '@/react-app/components/Testimonials';
-import ProjectsHero from '@/react-app/components/ProjectsHero';
-import FeaturedProjects from '@/react-app/components/FeaturedProjects';
-import ProjectTypes from '@/react-app/components/ProjectTypes';
-import ProjectsResults from '@/react-app/components/ProjectsResults';
+import { Navigation, Footer, FinalCTA } from '@/react-app/components/shared';
+import { Testimonials } from '@/react-app/components/home';
+import { 
+  ProjectsHero, 
+  FeaturedProjects, 
+  ProjectTypes, 
+  ProjectsResults 
+} from '@/react-app/components/projects';
 
 export default function ProjectsPage() {
   return (

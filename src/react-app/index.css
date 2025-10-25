@@ -10,6 +10,13 @@
   box-sizing: border-box;
 }
 
+html, body, #root {
+  background: linear-gradient(135deg, #000000 0%, #1a1a1a 50%, #0f2027 100%);
+  min-height: 100vh;
+  margin: 0;
+  padding: 0;
+}
+
 html {
   scroll-behavior: smooth;
 }

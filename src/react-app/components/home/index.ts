@@ -1,0 +1,9 @@
+export { default as Hero } from './Hero';
+export { default as EssenceBento } from './EssenceBento';
+export { default as Services } from './Services';
+export { default as Portfolio } from './Portfolio';
+export { default as Differentials } from './Differentials';
+export { default as BentoResults } from './BentoResults';
+export { default as ClientsMarquee } from './ClientsMarquee';
+export { default as Testimonials } from './Testimonials';
+export { default as FAQ } from './FAQ';

@@ -1,6 +1,6 @@
 import { motion } from 'framer-motion';
 import { Mail, Phone, MapPin, Instagram, Linkedin, Twitter, Github } from 'lucide-react';
-import Logo from '@/react-app/components/Logo';
+import Logo from './Logo';
 
 export default function Footer() {
   const currentYear = new Date().getFullYear();

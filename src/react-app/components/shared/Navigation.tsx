@@ -1,11 +1,14 @@
 import { motion, useScroll, useTransform } from 'framer-motion';
 import { useState } from 'react';
 import { Menu, X } from 'lucide-react';
-import Logo from '@/react-app/components/Logo';
+import { useLocation, useNavigate } from 'react-router';
+import Logo from './Logo';
 
 export default function Navigation() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const { scrollY } = useScroll();
+  const location = useLocation();
+  const navigate = useNavigate();
   
   const backgroundColor = useTransform(
     scrollY,
@@ -15,6 +18,37 @@ export default function Navigation() {
 
   const toggleMobileMenu = () => {
     setIsMobileMenuOpen(!isMobileMenuOpen);
+  };
+
+  const handleServicesClick = (e: React.MouseEvent) => {
+    e.preventDefault();
+    
+    if (location.pathname === '/') {
+      // Se já está na home, apenas faz scroll para a seção
+      const servicesSection = document.getElementById('servicos');
+      if (servicesSection) {
+        servicesSection.scrollIntoView({ 
+          behavior: 'smooth',
+          block: 'start'
+        });
+      }
+    } else {
+      // Se está em outra página, navega para home e depois faz scroll
+      navigate('/');
+      // Aguarda um pouco para a página carregar e depois faz scroll
+      setTimeout(() => {
+        const servicesSection = document.getElementById('servicos');
+        if (servicesSection) {
+          servicesSection.scrollIntoView({ 
+            behavior: 'smooth',
+            block: 'start'
+          });
+        }
+      }, 100);
+    }
+    
+    // Fecha o menu mobile se estiver aberto
+    setIsMobileMenuOpen(false);
   };
 
   return (
@@ -53,15 +87,15 @@ export default function Navigation() {
                   Projetos
                   <div className="absolute -bottom-1 left-0 w-0 h-0.5 bg-green-400 group-hover:w-full transition-all duration-200" />
                 </motion.a>
-                <motion.a
-                  href="#servicos"
+                <motion.button
+                  onClick={handleServicesClick}
                   className="text-white/80 hover:text-white transition-colors duration-200 relative group"
                   whileHover={{ y: -1 }}
                   transition={{ duration: 0.2 }}
                 >
                   Serviços
                   <div className="absolute -bottom-1 left-0 w-0 h-0.5 bg-green-400 group-hover:w-full transition-all duration-200" />
-                </motion.a>
+                </motion.button>
                 <motion.a
                   href="/contato"
                   className="text-white/80 hover:text-white transition-colors duration-200 relative group"
@@ -116,16 +150,15 @@ export default function Navigation() {
             >
               Sobre
             </motion.a>
-            <motion.a
-              href="#servicos"
+            <motion.button
+              onClick={handleServicesClick}
               className="text-white text-2xl font-semibold hover:text-green-400 transition-colors duration-200"
               initial={{ y: 20, opacity: 0 }}
               animate={{ y: 0, opacity: 1 }}
               transition={{ duration: 0.2, delay: 1 * 0.1 }}
-              onClick={toggleMobileMenu}
             >
               Serviços
-            </motion.a>
+            </motion.button>
             <motion.a
               href="/projetos"
               className="text-white text-2xl font-semibold hover:text-green-400 transition-colors duration-200"

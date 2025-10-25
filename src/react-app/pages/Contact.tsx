@@ -1,10 +1,10 @@
-import Navigation from '@/react-app/components/Navigation';
-import Footer from '@/react-app/components/Footer';
-import FinalCTA from '@/react-app/components/FinalCTA';
-import ContactHero from '@/react-app/components/ContactHero';
-import ContactForm from '@/react-app/components/ContactForm';
-import ContactMethods from '@/react-app/components/ContactMethods';
-import FAQ from '@/react-app/components/FAQ';
+import { Navigation, Footer, FinalCTA } from '@/react-app/components/shared';
+import { FAQ } from '@/react-app/components/home';
+import { 
+  ContactHero, 
+  ContactForm, 
+  ContactMethods 
+} from '@/react-app/components/contact';
 
 export default function Contact() {
 

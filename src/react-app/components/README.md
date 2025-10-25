@@ -1,62 +1,76 @@
-# Componentes Organizados
+# Components Structure
 
-Este diretório contém todos os componentes organizados por página e funcionalidade.
+Esta pasta contém todos os componentes React organizados por funcionalidade:
 
-## Estrutura de Componentes
+## 📁 Estrutura de Pastas
 
-### Página de Contato
-- `ContactHero.tsx` - Seção hero da página de contato
-- `ContactForm.tsx` - Formulário de contato interativo
-- `ContactMethods.tsx` - Métodos alternativos de contato
-- `ContactFAQ.tsx` - FAQ da página de contato
+### `/shared` - Componentes Compartilhados
+Componentes utilizados em múltiplas páginas:
+- `Navigation` - Barra de navegação principal
+- `Footer` - Rodapé do site
+- `Logo` - Logo da Kinetree
+- `FinalCTA` - Call-to-action final
 
-### Página Sobre
-- `AboutHero.tsx` - Seção hero da página sobre
-- `AboutHistory.tsx` - História da empresa
-- `AboutPhilosophy.tsx` - Filosofia de criação
-- `AboutPillars.tsx` - Pilares da empresa
-- `AboutCulture.tsx` - Cultura da empresa
-- `AboutCTA.tsx` - Call-to-action da página sobre
+### `/home` - Componentes da Página Home
+- `Hero` - Seção hero principal
+- `EssenceBento` - Grid de essência da marca
+- `Services` - Seção de serviços
+- `Portfolio` - Portfólio de projetos
+- `Differentials` - Diferenciais da empresa
+- `BentoResults` - Grid de resultados
+- `ClientsMarquee` - Carrossel de clientes
+- `Testimonials` - Depoimentos
+- `FAQ` - Perguntas frequentes
 
-### Página de Projetos
-- `ProjectsHero.tsx` - Seção hero da página de projetos
-- `ProjectsModal.tsx` - Modal para visualização de projetos
-- `FeaturedProjects.tsx` - Projetos em destaque
-- `ProjectTypes.tsx` - Tipos de projetos
-- `ProjectsResults.tsx` - Resultados e métricas
+### `/about` - Componentes da Página Sobre
+- `AboutHero` - Hero da página sobre
+- `AboutHistory` - História da empresa
+- `AboutPhilosophy` - Filosofia da empresa
+- `AboutPillars` - Pilares da empresa
+- `AboutCulture` - Cultura organizacional
+- `AboutCTA` - Call-to-action da página sobre
 
-### Componentes Compartilhados
-- `Navigation.tsx` - Navegação principal
-- `Footer.tsx` - Rodapé
-- `FinalCTA.tsx` - Call-to-action final
-- `EssenceBento.tsx` - Seção da essência da empresa
-- `Testimonials.tsx` - Depoimentos
-- `Logo.tsx` - Logo da empresa
+### `/projects` - Componentes da Página Projetos
+- `ProjectsHero` - Hero da página de projetos
+- `FeaturedProjects` - Projetos em destaque
+- `ProjectTypes` - Tipos de projetos
+- `ProjectsResults` - Resultados dos projetos
+- `ProjectsModal` - Modal de detalhes do projeto
 
-## Benefícios da Organização
+### `/services` - Componentes da Página Serviços
+- `ServicesHero` - Hero da página de serviços
+- `ServicesGrid` - Grid de serviços
+- `ServicesDifferentials` - Diferenciais dos serviços
 
-1. **Modularidade**: Cada componente tem uma responsabilidade específica
-2. **Reutilização**: Componentes podem ser reutilizados em diferentes páginas
-3. **Manutenibilidade**: Mais fácil de manter e atualizar
-4. **Legibilidade**: Código mais limpo e organizado
-5. **Escalabilidade**: Fácil adicionar novos componentes
+### `/contact` - Componentes da Página Contato
+- `ContactHero` - Hero da página de contato
+- `ContactForm` - Formulário de contato
+- `ContactMethods` - Métodos de contato
 
-## Como Usar
+## 🚀 Como Usar
 
-Cada página agora importa apenas os componentes necessários:
-
+### Importação Individual
 ```tsx
-// Exemplo: Contact.tsx
-import ContactHero from '@/react-app/components/ContactHero';
-import ContactForm from '@/react-app/components/ContactForm';
-import ContactMethods from '@/react-app/components/ContactMethods';
-import ContactFAQ from '@/react-app/components/ContactFAQ';
+import { Navigation, Footer } from '@/react-app/components/shared';
+import { Hero, Services } from '@/react-app/components/home';
 ```
 
-## Padrões Seguidos
+### Importação Geral
+```tsx
+import { Navigation, Hero, AboutHero } from '@/react-app/components';
+```
 
-- Nomenclatura clara e descritiva
-- Componentes focados em uma única responsabilidade
-- Props tipadas com TypeScript
-- Animações consistentes com Framer Motion
-- Design system unificado
+## 📝 Convenções
+
+1. **Nomes de arquivos**: PascalCase (ex: `AboutHero.tsx`)
+2. **Exports**: Default export para o componente principal
+3. **Imports**: Organizados por categoria (shared, específicos da página)
+4. **Estrutura**: Cada pasta tem seu próprio `index.ts` para facilitar imports
+
+## ✅ Benefícios da Nova Organização
+
+- **Modularidade**: Componentes organizados por contexto
+- **Reutilização**: Fácil identificação de componentes compartilhados
+- **Manutenibilidade**: Estrutura clara e previsível
+- **Escalabilidade**: Fácil adição de novos componentes
+- **Performance**: Imports otimizados e tree-shaking
