@@ -2,6 +2,7 @@ backend:
   name: github
   repo: ArthurCard050/KinetreeCorreto
   branch: main
+  auth_endpoint: /functions/auth
 
 # Configuração de mídia
 media_folder: "public/uploads"
