@@ -3,24 +3,36 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Autenticação - Kinetree CMS</title>
-  <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
+  <title>Autenticação GitHub - Kinetree CMS</title>
 </head>
 <body>
-  <h1>Processando autenticação...</h1>
+  <div style="text-align: center; padding: 50px; font-family: Arial, sans-serif;">
+    <h1>🔐 Autenticação GitHub</h1>
+    <p>Redirecionando para o GitHub...</p>
+    <p><a href="https://github.com/login/oauth/authorize?client_id=Ov23li0040DzG8n8pYvL&scope=repo&redirect_uri=https://kinetreecorreto.pages.dev/admin/">Clique aqui se não for redirecionado automaticamente</a></p>
+  </div>
+  
   <script>
-    if (window.netlifyIdentity) {
-      window.netlifyIdentity.on("init", user => {
-        if (!user) {
-          window.netlifyIdentity.on("login", () => {
-            document.location.href = "/admin/";
-          });
-        }
-      });
+    // Verificar se há token na URL (callback do GitHub)
+    const urlParams = new URLSearchParams(window.location.search);
+    const code = urlParams.get('code');
+    
+    if (code) {
+      // Se há código, processar autenticação
+      console.log('Código recebido:', code);
+      // Redirecionar para o CMS
+      window.location.href = '/admin/';
+    } else {
+      // Redirecionar para GitHub OAuth
+      const clientId = 'Ov23li0040DzG8n8pYvL';
+      const redirectUri = 'https://kinetreecorreto.pages.dev/admin/auth.html';
+      const scope = 'repo';
       
-      window.netlifyIdentity.on("logout", () => {
-        document.location.href = "/";
-      });
+      const authUrl = `https://github.com/login/oauth/authorize?client_id=${clientId}&scope=${scope}&redirect_uri=${encodeURIComponent(redirectUri)}`;
+      
+      setTimeout(() => {
+        window.location.href = authUrl;
+      }, 2000);
     }
   </script>
 </body>

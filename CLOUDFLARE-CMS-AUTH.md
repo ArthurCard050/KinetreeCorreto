@@ -3,45 +3,34 @@
 ## ⚠️ PROBLEMA IDENTIFICADO:
 GitHub OAuth direto no Cloudflare Pages é complexo devido a conflitos com React Router.
 
-## 🎯 Solução: Netlify Identity + Git Gateway (Funciona no Cloudflare!)
+## 🎯 Solução: GitHub OAuth Simples (Sem Netlify!)
 
-### **Por que Netlify Identity funciona no Cloudflare:**
-- ✅ **Funciona como proxy** - não precisa hospedar no Netlify
+### **Por que essa abordagem é melhor:**
+- ✅ **Sem dependências** do Netlify
+- ✅ **Gratuito** completamente
 - ✅ **Mais simples** de configurar
-- ✅ **Sem conflitos** com React Router
-- ✅ **Gratuito** até 1.000 usuários
+- ✅ **Funciona direto** no Cloudflare
 
-### **✅ NOVA CONFIGURAÇÃO - Siga os passos:**
+### **✅ CONFIGURAÇÃO SIMPLIFICADA:**
 
-#### 1. **Criar conta no Netlify (se não tiver)**
-- Acesse [netlify.com](https://netlify.com)
-- Faça login com GitHub
+#### 1. **Atualizar GitHub OAuth App**
+- Vá em: GitHub > Settings > Developer settings > OAuth Apps
+- Clique no **"Kinetree CMS"**
+- **Altere o Authorization callback URL** para:
+  ```
+  https://kinetreecorreto.pages.dev/admin/auth.html
+  ```
+- **Salve as mudanças**
 
-#### 2. **Criar site "dummy" no Netlify**
-- New site from Git
-- Conecte seu repositório `ArthurCard050/KinetreeCorreto`
-- **NÃO precisa fazer deploy** - só queremos o Identity
+#### 2. **Testar o CMS**
+- Aguarde o deploy no Cloudflare (2-3 minutos)
+- Acesse: `https://kinetreecorreto.pages.dev/admin`
+- Faça login com sua conta GitHub
 
-#### 3. **Ativar Netlify Identity**
-- No dashboard do Netlify: `Site Settings > Identity`
-- Clique em **"Enable Identity"**
-- Em **Registration preferences**: escolha **"Invite only"**
-- Em **Site details**, configure:
-  - **Site URL**: `https://kinetreecorreto.pages.dev`
-
-#### 4. **Configurar Git Gateway**
-- Ainda em Identity, vá em **"Services"**
-- Clique em **"Enable Git Gateway"**
-- Autorize o acesso ao GitHub
-
-#### 5. **Convidar usuários**
-- Em **Identity > Invite users**
-- Adicione seu email
-- Você receberá um convite por email
-
-#### 6. **Fazer Deploy no Cloudflare**
-- As mudanças já foram feitas no código
-- Aguarde o deploy no Cloudflare
+#### 3. **Pronto!**
+- Você será redirecionado para o GitHub
+- Após autorizar, voltará para o CMS
+- Poderá editar projetos e depoimentos
 
 ---
 

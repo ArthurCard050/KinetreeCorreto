@@ -1,8 +1,9 @@
 backend:
-  name: git-gateway
+  name: github
+  repo: ArthurCard050/KinetreeCorreto
   branch: main
 
-# URL do site (necessário para Netlify Identity)
+# URL do site
 site_url: https://kinetreecorreto.pages.dev
 
 # Configuração de mídia
@@ -15,7 +16,6 @@ locale: 'pt'
 # Configurações da interface
 logo_url: /favicon.ico
 show_preview_links: false
-site_url: https://kinetreecorreto.pages.dev
 
 # Collections (conteúdos editáveis)
 collections:
