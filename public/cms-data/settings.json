@@ -2,11 +2,11 @@
   "company_name": "Kinetree",
   "tagline": "Transformando ideias em experiências digitais",
   "contact_email": "contato@kinetree.com",
-  "phone": "",
-  "address": "",
+  "phone": "+55 (11) 99999-9999",
+  "address": "São Paulo, SP - Brasil",
   "social_media": {
-    "instagram": "",
-    "linkedin": "",
-    "github": ""
+    "instagram": "https://instagram.com/kinetree",
+    "linkedin": "https://linkedin.com/company/kinetree",
+    "github": "https://github.com/kinetree"
   }
 }

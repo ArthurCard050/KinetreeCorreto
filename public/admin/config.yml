@@ -40,7 +40,7 @@ collections:
               - {label: "URL do Projeto", name: "url", widget: "string", required: true}
               - {label: "Projeto em Destaque", name: "featured", widget: "boolean", default: true}
               - {label: "Ordem", name: "order", widget: "number", value_type: "int", min: 1}
-              - {label: "Tecnologias", name: "technologies", widget: "list", required: false, field: {label: "Tecnologia", name: "tech", widget: "string"}}
+              - {label: "Tecnologias", name: "technologies", widget: "list", required: false}
               - {label: "Duração", name: "duration", widget: "string", required: false, hint: "Ex: 3 semanas"}
               - {label: "Ano", name: "year", widget: "string", required: false}
 
