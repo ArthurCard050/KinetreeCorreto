@@ -1,5 +1,9 @@
 backend:
-  name: test-repo
+  name: github
+  repo: ArthurCard050/KinetreeCorreto
+  branch: main
+  auth_type: implicit
+  app_id: Iv23liGqp7BlkJATF4Fg
 
 # Configuração de mídia
 media_folder: "public/uploads"
