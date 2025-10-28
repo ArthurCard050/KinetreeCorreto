@@ -1,4 +1,4 @@
-// Cloudflare Pages Function para autenticação GitHub OAuth com Decap CMS
+// Cloudflare Pages Function para autenticação GitHub OAuth
 export async function onRequestGet(context) {
   const { request, env } = context;
   const url = new URL(request.url);
@@ -11,7 +11,6 @@ export async function onRequestGet(context) {
   // Se é callback do GitHub
   if (url.searchParams.has('code')) {
     const code = url.searchParams.get('code');
-    const state = url.searchParams.get('state');
     
     try {
       // Trocar código por token
@@ -32,50 +31,19 @@ export async function onRequestGet(context) {
       const tokenData = await tokenResponse.json();
       
       if (tokenData.access_token) {
-        // Criar resposta HTML para comunicar com o CMS
-        const html = `
-<!DOCTYPE html>
-<html>
-<head>
-  <title>Autenticação</title>
-</head>
-<body>
-  <script>
-    (function() {
-      function receiveMessage(e) {
-        console.log("receiveMessage %o", e);
-        if (e.origin !== "${url.origin}") {
-          console.log("Invalid origin: %s", e.origin);
-          return;
-        }
-        
-        // Enviar token para o CMS
-        e.source.postMessage(
-          'authorization:github:success:{"token":"${tokenData.access_token}","provider":"github"}',
-          e.origin
-        );
-      }
-      
-      window.addEventListener("message", receiveMessage, false);
-      
-      // Notificar que está pronto
-      console.log("Pronto para receber mensagens");
-    })();
-  </script>
-</body>
-</html>`;
-        
-        return new Response(html, {
-          headers: { 'Content-Type': 'text/html' },
-        });
+        // Redirecionar para admin com token nos parâmetros
+        const adminUrl = `${url.origin}/admin/#access_token=${tokenData.access_token}&token_type=bearer&provider=github`;
+        return Response.redirect(adminUrl, 302);
+      } else {
+        return new Response('Erro: Token não recebido', { status: 400 });
       }
     } catch (error) {
       console.error('Erro na autenticação:', error);
-      return new Response('Erro na autenticação', { status: 500 });
+      return new Response(`Erro na autenticação: ${error.message}`, { status: 500 });
     }
   }
   
   // Redirecionar para GitHub OAuth
-  const authUrl = `https://github.com/login/oauth/authorize?client_id=${clientId}&redirect_uri=${encodeURIComponent(redirectUri)}&scope=repo&state=${Date.now()}`;
+  const authUrl = `https://github.com/login/oauth/authorize?client_id=${clientId}&redirect_uri=${encodeURIComponent(redirectUri)}&scope=repo`;
   return Response.redirect(authUrl, 302);
 }
