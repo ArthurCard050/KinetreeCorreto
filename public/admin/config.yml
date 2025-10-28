@@ -1,0 +1,91 @@
+backend:
+  name: github
+  repo: Iv23liGqp7BlkJATF4Fg
+  branch: main
+
+# Configuração de mídia
+media_folder: "public/uploads"
+public_folder: "/uploads"
+
+# Configuração de localização (português)
+locale: 'pt'
+
+# Configurações da interface
+logo_url: /favicon.ico
+show_preview_links: false
+display_url: https://kinetree.com
+
+# Collections (conteúdos editáveis)
+collections:
+  # Projetos
+  - name: "projects_data"
+    label: "📁 Projetos"
+    description: "Gerencie o portfólio de projetos da Kinetree"
+    files:
+      - label: "Lista de Projetos"
+        name: "projects"
+        file: "public/cms-data/projects.json"
+        fields:
+          - label: "Projetos"
+            name: "projects"
+            widget: "list"
+            summary: "{{fields.title}} - {{fields.category}}"
+            fields:
+              - {label: "ID", name: "id", widget: "number", value_type: "int"}
+              - {label: "Título", name: "title", widget: "string", required: true}
+              - {label: "Descrição", name: "description", widget: "text", required: false}
+              - {label: "Categoria", name: "category", widget: "select", options: ["Site institucional", "Landing page", "E-commerce", "E-commerce e Landing page", "Portal corporativo", "Web App", "Portfólio"]}
+              - {label: "Resultado", name: "result", widget: "string", hint: "Ex: +240% conversão"}
+              - {label: "Imagem", name: "image", widget: "image", required: true}
+              - {label: "URL do Projeto", name: "url", widget: "string", required: true}
+              - {label: "Projeto em Destaque", name: "featured", widget: "boolean", default: true}
+              - {label: "Ordem", name: "order", widget: "number", value_type: "int", min: 1}
+              - {label: "Tecnologias", name: "technologies", widget: "list", required: false, field: {label: "Tecnologia", name: "tech", widget: "string"}}
+              - {label: "Duração", name: "duration", widget: "string", required: false, hint: "Ex: 3 semanas"}
+              - {label: "Ano", name: "year", widget: "string", required: false}
+
+  # Depoimentos
+  - name: "testimonials_data"
+    label: "💬 Depoimentos"
+    description: "Gerencie os depoimentos de clientes"
+    files:
+      - label: "Lista de Depoimentos"
+        name: "testimonials"
+        file: "public/cms-data/testimonials.json"
+        fields:
+          - label: "Depoimentos"
+            name: "testimonials"
+            widget: "list"
+            summary: "{{fields.name}} - {{fields.company}}"
+            fields:
+              - {label: "ID", name: "id", widget: "number", value_type: "int"}
+              - {label: "Nome", name: "name", widget: "string", required: true}
+              - {label: "Empresa", name: "company", widget: "string", required: true}
+              - {label: "Cargo", name: "role", widget: "string", required: true}
+              - {label: "Depoimento", name: "content", widget: "text", required: true}
+              - {label: "Avatar (URL)", name: "avatar", widget: "string", required: true, hint: "URL da imagem do avatar"}
+              - {label: "Avaliação", name: "rating", widget: "number", value_type: "int", min: 1, max: 5, default: 5}
+              - {label: "Depoimento em Destaque", name: "featured", widget: "boolean", default: true}
+              - {label: "Ordem", name: "order", widget: "number", value_type: "int", min: 1}
+
+  # Configurações do Site (futuro)
+  - name: "settings"
+    label: "⚙️ Configurações"
+    description: "Configurações gerais do site"
+    files:
+      - label: "Informações Gerais"
+        name: "general"
+        file: "public/cms-data/settings.json"
+        fields:
+          - {label: "Nome da Empresa", name: "company_name", widget: "string", default: "Kinetree"}
+          - {label: "Tagline", name: "tagline", widget: "string", default: "Transformando ideias em experiências digitais"}
+          - {label: "Email de Contato", name: "contact_email", widget: "string"}
+          - {label: "Telefone", name: "phone", widget: "string", required: false}
+          - {label: "Endereço", name: "address", widget: "text", required: false}
+          - label: "Redes Sociais"
+            name: "social_media"
+            widget: "object"
+            fields:
+              - {label: "Instagram", name: "instagram", widget: "string", required: false}
+              - {label: "LinkedIn", name: "linkedin", widget: "string", required: false}
+              - {label: "GitHub", name: "github", widget: "string", required: false}

@@ -1,49 +1,44 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta property="og:title" content="Kinetree" />
-    <meta property="og:description" content="Não criamos sites. Construímos estruturas vivas para o seu crescimento digital." />
-    <meta
-      property="og:image"
-      content="https://mocha-cdn.com/og.png"
-      type="image/png"
-    />
-    <meta
-      property="og:url"
-      content="https://kinetree.com"
-    />
-    <meta property="og:type" content="website" />
-    <meta property="og:author" content="Kinetree" />
-    <meta property="og:site_name" content="Kinetree" />
-    <meta property="twitter:card" content="summary_large_image" />
-    <meta property="twitter:site" content="@kinetree" />
-    <meta property="twitter:title" content="Kinetree" />
-    <meta property="twitter:description" content="Não criamos sites. Construímos estruturas vivas para o seu crescimento digital." />
-    <meta
-      property="twitter:image"
-      content="https://mocha-cdn.com/og.png"
-      type="image/png"
-    />
-    <link
-      rel="shortcut icon"
-      href="https://mocha-cdn.com/favicon.ico"
-      type="image/x-icon"
-    />
-    <link
-      rel="apple-touch-icon"
-      sizes="180x180"
-      href="https://mocha-cdn.com/apple-touch-icon.png"
-      type="image/png"
-    />
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;1,200;1,300;1,400;1,500;1,600;1,700;1,800&display=swap" rel="stylesheet">
-    <title>Kinetree</title>
-  </head>
-  <body>
-    <div id="root"></div>
-    <script type="module" src="/src/react-app/main.tsx"></script>
-  </body>
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta property="og:title" content="Kinetree" />
+  <meta property="og:description"
+    content="Não criamos sites. Construímos estruturas vivas para o seu crescimento digital." />
+  <meta property="og:image" content="https://mocha-cdn.com/og.png" type="image/png" />
+  <meta property="og:url" content="https://kinetree.com" />
+  <meta property="og:type" content="website" />
+  <meta property="og:author" content="Kinetree" />
+  <meta property="og:site_name" content="Kinetree" />
+  <meta property="twitter:card" content="summary_large_image" />
+  <meta property="twitter:site" content="@kinetree" />
+  <meta property="twitter:title" content="Kinetree" />
+  <meta property="twitter:description"
+    content="Não criamos sites. Construímos estruturas vivas para o seu crescimento digital." />
+  <meta property="twitter:image" content="https://mocha-cdn.com/og.png" type="image/png" />
+  <link rel="shortcut icon" href="https://mocha-cdn.com/favicon.ico" type="image/x-icon" />
+  <link rel="apple-touch-icon" sizes="180x180" href="https://mocha-cdn.com/apple-touch-icon.png" type="image/png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;1,200;1,300;1,400;1,500;1,600;1,700;1,800&display=swap"
+    rel="stylesheet">
+  <title>Kinetree</title>
+</head>
+
+<body>
+  <div id="root"></div>
+  <script type="module" src="/src/react-app/main.tsx"></script>
+  
+  <!-- GitHub OAuth para Decap CMS -->
+  <script>
+    // Configuração simples para GitHub OAuth
+    if (window.location.pathname === '/admin/' && window.location.search.includes('code=')) {
+      // Já está autenticado via GitHub
+    }
+  </script>
+</body>
+
 </html>

@@ -1,0 +1,5 @@
+# Redirecionamentos para o Decap CMS
+/admin/* /admin/index.html 200
+
+# Redirecionamentos gerais do SPA
+/* /index.html 200
