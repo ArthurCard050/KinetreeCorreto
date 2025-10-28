@@ -378,7 +378,7 @@ export default function Services() {
       ],
       idealFor: ["Empresas", "Consultórios", "Agências", "Negócios que precisam de presença sólida"],
       timeline: "2-4 semanas",
-      price: "A partir de R$ 3.500"
+      price: "A partir de R$ 1.800"
     },
     {
       icon: <Target className="w-8 h-8 text-black" />,
@@ -395,7 +395,7 @@ export default function Services() {
       ],
       idealFor: ["Campanhas de marketing", "Lançamentos de produtos", "Eventos"],
       timeline: "1-2 semanas",
-      price: "A partir de R$ 2.500"
+      price: "A partir de R$ 950"
     },
     {
       icon: <ShoppingCart className="w-8 h-8 text-black" />,
@@ -412,7 +412,7 @@ export default function Services() {
       ],
       idealFor: ["Lojas", "Marcas", "Distribuidores", "Negócios que desejam vender com autonomia"],
       timeline: "4-8 semanas",
-      price: "A partir de R$ 8.500"
+      price: "A partir de R$ 3.500"
     },
     {
       icon: <FileText className="w-8 h-8 text-black" />,
@@ -429,7 +429,7 @@ export default function Services() {
       ],
       idealFor: ["Freelancers", "Startups", "Pequenos negócios", "Eventos"],
       timeline: "2-3 semanas",
-      price: "A partir de R$ 2.000"
+      price: "A partir de R$ 1.200"
     },
     {
       icon: <Image className="w-8 h-8 text-black" />,
@@ -446,7 +446,7 @@ export default function Services() {
       ],
       idealFor: ["Designers", "Fotógrafos", "Arquitetos", "Artistas", "Criativos"],
       timeline: "2-3 semanas",
-      price: "A partir de R$ 2.500"
+      price: "A partir de R$ 1.200"
     },
     {
       icon: <Code className="w-8 h-8 text-black" />,
@@ -463,7 +463,7 @@ export default function Services() {
       ],
       idealFor: ["Empresas com demandas específicas", "Portais corporativos", "SaaS", "Ferramentas internas"],
       timeline: "6-12 semanas",
-      price: "A partir de R$ 15.000"
+      price: "Sob Orçamento"
     }
   ];
 

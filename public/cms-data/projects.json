@@ -1,0 +1,60 @@
+{
+  "projects": [
+    {
+      "id": 1,
+      "title": "Saxias Saúde",
+      "description": "Site institucional completo para clínica de saúde com foco em conversão e experiência do usuário.",
+      "category": "Site institucional",
+      "result": "+240% conversão",
+      "image": "/case-01.webp",
+      "url": "https://magical-moonbeam-f78b23.netlify.app/",
+      "featured": true,
+      "order": 1,
+      "technologies": ["React", "TypeScript", "Tailwind CSS"],
+      "duration": "3 semanas",
+      "year": "2024"
+    },
+    {
+      "id": 2,
+      "title": "Laboratório Anacli",
+      "description": "Plataforma digital para laboratório de análises clínicas com sistema de agendamento integrado.",
+      "category": "Site institucional",
+      "result": "+180% leads",
+      "image": "/case-02.webp",
+      "url": "https://anacli.netlify.app/",
+      "featured": true,
+      "order": 2,
+      "technologies": ["Next.js", "React", "Styled Components"],
+      "duration": "4 semanas",
+      "year": "2024"
+    },
+    {
+      "id": 3,
+      "title": "Baixe Arquivos.shop",
+      "description": "E-commerce completo para venda de arquivos digitais com sistema de pagamento integrado.",
+      "category": "E-commerce e Landing page",
+      "result": "+90% performance",
+      "image": "/case-03.webp",
+      "url": "https://packpng.baixearquivos.shop/",
+      "featured": true,
+      "order": 3,
+      "technologies": ["React", "Node.js", "Stripe"],
+      "duration": "6 semanas",
+      "year": "2024"
+    },
+    {
+      "id": 4,
+      "title": "Cicatribio VET",
+      "description": "Landing page estratégica para produto veterinário com foco em conversão de leads.",
+      "category": "Landing page",
+      "result": "+130% eficiência",
+      "image": "/case-04.webp",
+      "url": "https://cicatribiovet.cicatribio.com.br/",
+      "featured": true,
+      "order": 4,
+      "technologies": ["React", "Framer Motion", "Tailwind CSS"],
+      "duration": "2 semanas",
+      "year": "2024"
+    }
+  ]
+}

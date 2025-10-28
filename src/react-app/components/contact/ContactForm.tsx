@@ -16,6 +16,8 @@ export default function ContactForm() {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
 
+
+
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
     const { name, value } = e.target;
     setFormData(prev => ({
@@ -27,25 +29,83 @@ export default function ContactForm() {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
-    
-    // Simular envio do formulário
-    await new Promise(resolve => setTimeout(resolve, 2000));
-    
-    setIsSubmitting(false);
-    setIsSubmitted(true);
-    
-    // Reset form after 3 seconds
-    setTimeout(() => {
-      setIsSubmitted(false);
-      setFormData({
-        name: '',
-        email: '',
-        company: '',
-        projectType: '',
-        budget: '',
-        message: ''
+
+    try {
+      const GOOGLE_APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbzIfwxAlb5PusZjFMJxd2I05wInQ8v7kQpO53F6bivnJ8iwj9ZaiMOxmvQr-661ALgB/exec';
+
+      console.log('🚀 Enviando dados via formulário oculto...');
+
+      // Criar formulário oculto para contornar CORS
+      const form = document.createElement('form');
+      form.method = 'POST';
+      form.action = GOOGLE_APPS_SCRIPT_URL;
+      form.target = 'hidden_iframe';
+      form.style.display = 'none';
+
+      // Criar campos ocultos
+      const fields = [
+        { name: 'name', value: formData.name },
+        { name: 'email', value: formData.email },
+        { name: 'company', value: formData.company || 'Não informado' },
+        { name: 'projectType', value: formData.projectType },
+        { name: 'budget', value: formData.budget },
+        { name: 'message', value: formData.message },
+        { name: 'timestamp', value: new Date().toLocaleString('pt-BR') }
+      ];
+
+      fields.forEach(field => {
+        const input = document.createElement('input');
+        input.type = 'hidden';
+        input.name = field.name;
+        input.value = field.value;
+        form.appendChild(input);
       });
-    }, 3000);
+
+      // Criar iframe oculto se não existir
+      let iframe = document.getElementById('hidden_iframe') as HTMLIFrameElement;
+      if (!iframe) {
+        iframe = document.createElement('iframe');
+        iframe.id = 'hidden_iframe';
+        iframe.name = 'hidden_iframe';
+        iframe.style.display = 'none';
+        document.body.appendChild(iframe);
+      }
+
+      // Adicionar formulário ao DOM e enviar
+      document.body.appendChild(form);
+      form.submit();
+
+      console.log('✅ Formulário enviado!');
+
+      // Remover formulário após envio
+      setTimeout(() => {
+        if (document.body.contains(form)) {
+          document.body.removeChild(form);
+        }
+      }, 1000);
+
+      // Mostrar sucesso (assumimos que funcionou)
+      setIsSubmitted(true);
+
+      // Reset form after 5 seconds
+      setTimeout(() => {
+        setIsSubmitted(false);
+        setFormData({
+          name: '',
+          email: '',
+          company: '',
+          projectType: '',
+          budget: '',
+          message: ''
+        });
+      }, 5000);
+
+    } catch (error) {
+      console.error('❌ Erro ao enviar:', error);
+      alert('Erro ao enviar mensagem. Tente novamente.');
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
@@ -92,7 +152,7 @@ export default function ContactForm() {
                       placeholder="Seu nome completo"
                     />
                   </div>
-                  
+
                   <div>
                     <label className="block text-white font-medium mb-2">E-mail</label>
                     <input
@@ -137,7 +197,7 @@ export default function ContactForm() {
                       <option value="outro" className="bg-gray-800">Outro</option>
                     </select>
                   </div>
-                  
+
                   <div>
                     <label className="block text-white font-medium mb-2">Orçamento estimado</label>
                     <select
@@ -189,7 +249,7 @@ export default function ContactForm() {
                       </>
                     )}
                   </motion.button>
-                  
+
                   <p className="text-white/60 text-sm mt-4 flex items-center justify-center space-x-2">
                     <Shield className="w-4 h-4" />
                     <span>Todas as informações são confidenciais.</span>

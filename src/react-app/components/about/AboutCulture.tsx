@@ -53,7 +53,7 @@ export default function AboutCulture() {
 
                   {/* Floating badge - always visible */}
                   <div className="absolute top-6 right-6 z-20 backdrop-blur-md bg-green-400/25 border border-green-400/40 rounded-full px-4 py-2 group-hover:bg-green-400/35 transition-all duration-300">
-                    <span className="text-green-200 text-sm font-medium">Designer</span>
+                    <span className="text-green-200 text-sm font-medium">Desenvolvimento</span>
                   </div>
 
                   {/* Hover Content Overlay */}
@@ -62,9 +62,9 @@ export default function AboutCulture() {
                       <h3 className="text-3xl font-bold text-white mb-2">
                         Arthur
                       </h3>
-                      <p className="text-green-400 font-semibold mb-3 text-lg">Creative Director</p>
+                      <p className="text-green-400 font-semibold mb-3 text-lg">Front-end Developer</p>
                       <p className="text-white/90 leading-relaxed">
-                        Transforma ideias em experiências visuais que conectam marcas e pessoas de forma autêntica.
+                        Transforma designs em interfaces fluidas e intuitivas, criando experiências digitais que encantam e engajam os usuários.
                       </p>
                     </div>
                   </div>
@@ -93,7 +93,7 @@ export default function AboutCulture() {
 
                   {/* Floating badge - always visible */}
                   <div className="absolute top-6 right-6 z-20 backdrop-blur-md bg-green-400/25 border border-green-400/40 rounded-full px-4 py-2 group-hover:bg-green-400/35 transition-all duration-300">
-                    <span className="text-green-200 text-sm font-medium">Strategy</span>
+                    <span className="text-green-200 text-sm font-medium">Negócios</span>
                   </div>
 
                   {/* Hover Content Overlay */}
@@ -102,9 +102,9 @@ export default function AboutCulture() {
                       <h3 className="text-3xl font-bold text-white mb-2">
                         Mylena
                       </h3>
-                      <p className="text-green-400 font-semibold mb-3 text-lg">Brand Strategist</p>
+                      <p className="text-green-400 font-semibold mb-3 text-lg">Gerente Comercial</p>
                       <p className="text-white/90 leading-relaxed">
-                        Conecta propósito e performance para criar estratégias que geram resultados reais.
+                        Cria pontes entre desafios de negócio e soluções digitais, cultivando parcerias estratégicas que impulsionam o crescimento mútuo.
                       </p>
                     </div>
                   </div>
@@ -123,8 +123,8 @@ export default function AboutCulture() {
                 <div className="aspect-[4/5] relative overflow-hidden">
                   {/* Image */}
                   <img
-                    src="/Arthur.webp"
-                    alt="Arthur - Kinetree"
+                    src="/Jonas.webp"
+                    alt="Jonas - Kinetree"
                     className="w-full h-full object-cover scale-110 group-hover:scale-125 transition-transform duration-700"
                   />
 
@@ -133,18 +133,18 @@ export default function AboutCulture() {
 
                   {/* Floating badge - always visible */}
                   <div className="absolute top-6 right-6 z-20 backdrop-blur-md bg-green-400/25 border border-green-400/40 rounded-full px-4 py-2 group-hover:bg-green-400/35 transition-all duration-300">
-                    <span className="text-green-200 text-sm font-medium">Strategy</span>
+                    <span className="text-green-200 text-sm font-medium">Infraestrutura</span>
                   </div>
 
                   {/* Hover Content Overlay */}
                   <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-all duration-500 z-10">
                     <div className="absolute bottom-0 left-0 right-0 p-6 transform translate-y-4 group-hover:translate-y-0 transition-transform duration-500">
                       <h3 className="text-3xl font-bold text-white mb-2">
-                        Arthur
+                        Jonas
                       </h3>
-                      <p className="text-green-400 font-semibold mb-3 text-lg">Tech Lead</p>
+                      <p className="text-green-400 font-semibold mb-3 text-lg">Back-end Developer</p>
                       <p className="text-white/90 leading-relaxed">
-                        Arquiteta soluções robustas e escaláveis que fazem a diferença no mundo real.
+                        Desenvolve a lógica e a estrutura que sustentam nossas aplicações, garantindo performance, segurança e escalabilidade em cada projeto.
                       </p>
                     </div>
                   </div>
