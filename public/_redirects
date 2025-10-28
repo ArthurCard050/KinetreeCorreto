@@ -1,5 +1,9 @@
 # Redirecionamentos para o Decap CMS
 /admin /admin/index.html 200
+/admin/auth /admin/auth.html 200
+
+# Netlify Identity redirects
+/.netlify/identity/* 200
 
 # SPA fallback
 /* /index.html 200

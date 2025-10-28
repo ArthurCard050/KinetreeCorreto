@@ -43,6 +43,9 @@
           });
         }
       });
+      
+      // Handle password recovery and email confirmation
+      window.netlifyIdentity.on("error", err => console.error("Error", err));
     }
   </script>
   

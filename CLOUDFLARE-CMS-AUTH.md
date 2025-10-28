@@ -26,6 +26,8 @@ GitHub OAuth direto no Cloudflare Pages é complexo devido a conflitos com React
 - No dashboard do Netlify: `Site Settings > Identity`
 - Clique em **"Enable Identity"**
 - Em **Registration preferences**: escolha **"Invite only"**
+- Em **Site details**, configure:
+  - **Site URL**: `https://kinetreecorreto.pages.dev`
 
 #### 4. **Configurar Git Gateway**
 - Ainda em Identity, vá em **"Services"**

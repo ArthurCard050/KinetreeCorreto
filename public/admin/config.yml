@@ -2,6 +2,9 @@ backend:
   name: git-gateway
   branch: main
 
+# URL do site (necessário para Netlify Identity)
+site_url: https://kinetreecorreto.pages.dev
+
 # Configuração de mídia
 media_folder: "public/uploads"
 public_folder: "/uploads"
