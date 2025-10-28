@@ -32,11 +32,17 @@
   <div id="root"></div>
   <script type="module" src="/src/react-app/main.tsx"></script>
   
-  <!-- GitHub OAuth para Decap CMS -->
+  <!-- Netlify Identity Widget -->
+  <script type="text/javascript" src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
   <script>
-    // Configuração simples para GitHub OAuth
-    if (window.location.pathname === '/admin/' && window.location.search.includes('code=')) {
-      // Já está autenticado via GitHub
+    if (window.netlifyIdentity) {
+      window.netlifyIdentity.on("init", user => {
+        if (!user) {
+          window.netlifyIdentity.on("login", () => {
+            document.location.href = "/admin/";
+          });
+        }
+      });
     }
   </script>
 </body>

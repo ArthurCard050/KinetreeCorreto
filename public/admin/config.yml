@@ -1,9 +1,6 @@
 backend:
-  name: github
-  repo: ArthurCard050/KinetreeCorreto
+  name: git-gateway
   branch: main
-  auth_type: implicit
-  app_id: Iv23liGqp7BlkJATF4Fg
 
 # Configuração de mídia
 media_folder: "public/uploads"
@@ -15,7 +12,7 @@ locale: 'pt'
 # Configurações da interface
 logo_url: /favicon.ico
 show_preview_links: false
-display_url: https://kinetree.com
+site_url: https://kinetreecorreto.pages.dev
 
 # Collections (conteúdos editáveis)
 collections:
