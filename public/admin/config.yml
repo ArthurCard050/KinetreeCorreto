@@ -1,7 +1,5 @@
 backend:
-  name: github
-  repo: ArthurCard050/KinetreeCorreto
-  branch: main
+  name: test-repo
 
 # URL do site
 site_url: https://kinetreecorreto.pages.dev
