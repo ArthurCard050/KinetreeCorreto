@@ -1,5 +1,6 @@
 backend:
-  name: git-gateway
+  name: github
+  repo: ArthurCard050/KinetreeCorreto
   branch: main
 
 # Configuração de mídia
