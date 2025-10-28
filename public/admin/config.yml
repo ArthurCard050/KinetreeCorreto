@@ -3,7 +3,7 @@ backend:
   repo: ArthurCard050/KinetreeCorreto
   branch: main
   base_url: https://kinetreecorreto.pages.dev
-  auth_endpoint: /functions/auth
+  auth_endpoint: /functions/oauth
 
 # Configuração de mídia
 media_folder: "public/uploads"

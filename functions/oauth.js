@@ -6,7 +6,7 @@ export async function onRequestGet(context) {
   // Configurações OAuth do GitHub
   const clientId = env.GITHUB_CLIENT_ID;
   const clientSecret = env.GITHUB_CLIENT_SECRET;
-  const redirectUri = `${url.origin}/functions/auth`;
+  const redirectUri = `${url.origin}/functions/oauth`;
   
   // Se é callback do GitHub
   if (url.searchParams.has('code')) {

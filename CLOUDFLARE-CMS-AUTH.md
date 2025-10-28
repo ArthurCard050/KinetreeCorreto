@@ -19,7 +19,7 @@ Você configurou Auth0 no Netlify, mas seu site está no Cloudflare Pages. Isso 
 - Preencha:
   - **Application name**: `Kinetree CMS`
   - **Homepage URL**: `https://kinetreecorreto.pages.dev`
-  - **Authorization callback URL**: `https://kinetreecorreto.pages.dev/functions/auth`
+  - **Authorization callback URL**: `https://kinetreecorreto.pages.dev/functions/oauth`
 - Clique em **"Register application"**
 - **Copie** o `Client ID` e gere um `Client Secret`
 
