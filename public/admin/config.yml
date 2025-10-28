@@ -1,9 +1,6 @@
 backend:
-  name: github
-  repo: ArthurCard050/KinetreeCorreto
+  name: git-gateway
   branch: main
-  base_url: https://kinetreecorreto.pages.dev
-  auth_endpoint: /functions/oauth
 
 # Configuração de mídia
 media_folder: "public/uploads"

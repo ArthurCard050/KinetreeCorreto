@@ -1,5 +1,5 @@
 # Redirecionamentos para o Decap CMS
 /admin /admin/index.html 200
 
-# SPA fallback - excluir admin e functions
-/!(admin|functions)/* /index.html 200
+# SPA fallback
+/* /index.html 200
