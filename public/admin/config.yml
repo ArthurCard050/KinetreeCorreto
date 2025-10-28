@@ -1,7 +1,5 @@
 backend:
-  name: github
-  repo: ArthurCard050/KinetreeCorreto
-  branch: main
+  name: test-repo
 
 # Configuração de mídia
 media_folder: "public/uploads"
