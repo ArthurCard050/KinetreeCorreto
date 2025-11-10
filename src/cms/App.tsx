@@ -1,4 +1,3 @@
-import React from 'react';
 import { Admin, Resource } from 'react-admin';
 import { dataProvider } from './dataProvider';
 import { ProjectList, ProjectEdit, ProjectCreate } from './resources/Projects';

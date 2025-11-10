@@ -1,172 +1,187 @@
 import { motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
-import { useState, useEffect } from 'react';
-import { optimizedVariants } from '../../hooks/useOptimizedAnimation';
-
-interface BentoCardProps {
-  title: string;
-  subtitle: string;
-  description: string;
-  animationType: 'progress' | 'stars' | 'chart' | 'energy';
-  delay?: number;
-}
-
-function BentoCard({ title, subtitle, description, animationType, delay = 0 }: BentoCardProps) {
-  const [ref, inView] = useInView({ threshold: 0.3 });
-  const [animated, setAnimated] = useState(false);
-
-  useEffect(() => {
-    if (inView && !animated) {
-      setAnimated(true);
-    }
-  }, [inView, animated]);
-
-  return (
-    <motion.div
-      ref={ref}
-      className="bg-gradient-to-br from-white/5 to-white/10 backdrop-blur-sm border border-white/10 rounded-3xl p-8 hover:from-white/10 hover:to-white/15 transition-all duration-500 group relative overflow-hidden"
-      initial={{ opacity: 0, y: 20 }}
-      animate={inView ? { opacity: 1, y: 0 } : {}}
-      transition={{ duration: 0.4, delay }}
-      whileHover={{ 
-        scale: 1.02, 
-        boxShadow: "0 20px 60px rgba(34, 197, 94, 0.15)" 
-      }}
-    >
-      {/* Background energy effect */}
-      {animationType === 'energy' && (
-        <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
-          <div className="absolute inset-0 bg-gradient-to-r from-green-500/10 via-transparent to-green-500/10 animate-pulse" />
-        </div>
-      )}
-      
-      <div className="relative z-10">
-        <motion.div
-          className="text-4xl font-bold text-green-400 mb-3"
-          initial={{ scale: 0.8, opacity: 0 }}
-          animate={inView ? { scale: 1, opacity: 1 } : {}}
-          transition={{ duration: 0.6, delay: delay + 0.2 }}
-        >
-          {subtitle}
-        </motion.div>
-        
-        <motion.h3
-          className="text-2xl font-bold text-white mb-4"
-          initial={{ opacity: 0, x: -20 }}
-          animate={inView ? { opacity: 1, x: 0 } : {}}
-          transition={{ duration: 0.6, delay: delay + 0.3 }}
-        >
-          {title}
-        </motion.h3>
-        
-        <motion.p
-          className="text-white/70 leading-relaxed mb-6"
-          initial={{ opacity: 0 }}
-          animate={inView ? { opacity: 1 } : {}}
-          transition={{ duration: 0.6, delay: delay + 0.4 }}
-        >
-          {description}
-        </motion.p>
-
-        {/* Animation elements */}
-        {animationType === 'progress' && (
-          <div className="w-full bg-white/20 rounded-full h-3">
-            <motion.div
-              className="h-3 bg-gradient-to-r from-green-500 to-green-300 rounded-full"
-              initial={{ width: 0 }}
-              animate={animated ? { width: '90%' } : {}}
-              transition={{ duration: 1.5, delay: delay + 0.6 }}
-            />
-          </div>
-        )}
-
-        {animationType === 'stars' && (
-          <div className="flex space-x-2">
-            {[...Array(5)].map((_, i) => (
-              <motion.div
-                key={i}
-                initial={{ scale: 0, rotate: 180 }}
-                animate={animated ? { scale: 1, rotate: 0 } : {}}
-                transition={{ duration: 0.4, delay: delay + 0.6 + i * 0.1 }}
-              >
-                <svg className="w-8 h-8 text-green-400 fill-current" viewBox="0 0 20 20">
-                  <path d="M10 15l-5.878 3.09 1.123-6.545L0 6.91l6.564-.955L10 0l3.436 5.955L20 6.91l-5.245 4.635L15.878 18z"/>
-                </svg>
-              </motion.div>
-            ))}
-          </div>
-        )}
-
-        {animationType === 'chart' && (
-          <div className="flex items-end space-x-2 h-16">
-            {[30, 50, 70, 90, 85, 95].map((height, i) => (
-              <motion.div
-                key={i}
-                className="bg-gradient-to-t from-green-500 to-green-300 rounded-t flex-1"
-                initial={{ height: 0 }}
-                animate={animated ? { height: `${height}%` } : {}}
-                transition={{ duration: 0.8, delay: delay + 0.6 + i * 0.1 }}
-              />
-            ))}
-          </div>
-        )}
-      </div>
-    </motion.div>
-  );
-}
+import { useRef } from 'react';
 
 export default function BentoResults() {
+  const [ref, inView] = useInView({ threshold: 0.2, triggerOnce: true });
+  const containerRef = useRef<HTMLDivElement>(null);
+
+  const stats = [
+    { 
+      number: '240',
+      suffix: '%',
+      label: 'Aumento em Conversão',
+      sublabel: 'Média em 21 dias'
+    },
+    { 
+      number: '2.5',
+      suffix: 's',
+      label: 'Tempo de Carregamento',
+      sublabel: 'Performance garantida'
+    },
+    { 
+      number: '98',
+      suffix: '%',
+      label: 'Score de Performance',
+      sublabel: 'Core Web Vitals'
+    },
+    { 
+      number: '100',
+      suffix: '+',
+      label: 'Projetos Entregues',
+      sublabel: 'Clientes satisfeitos'
+    },
+  ];
+
   return (
-    <section className="py-20 bg-gradient-to-b from-green-900 via-black to-gray-900">
-      <div className="container mx-auto px-6">
+    <section 
+      ref={containerRef}
+      className="relative py-20 lg:py-28 bg-gradient-to-b from-black via-gray-950 to-black overflow-hidden"
+    >
+      {/* Noise Texture */}
+      <div 
+        className="absolute inset-0 opacity-[0.015]"
+        style={{
+          backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E")`,
+        }}
+      />
+
+      {/* Glass Morphism Panels */}
+      <div className="absolute inset-0 overflow-hidden pointer-events-none">
+        {/* Top Left Panel */}
+        <div className="absolute top-0 left-0 w-[600px] h-[600px] -translate-x-1/2 -translate-y-1/2">
+          <div className="w-full h-full bg-gradient-to-br from-green-500/10 to-transparent backdrop-blur-3xl rounded-full" />
+        </div>
+        
+        {/* Top Right Panel */}
+        <div className="absolute top-0 right-0 w-[500px] h-[500px] translate-x-1/3 -translate-y-1/3">
+          <div className="w-full h-full bg-gradient-to-bl from-green-400/10 to-transparent backdrop-blur-3xl rounded-full" />
+        </div>
+        
+        {/* Bottom Left Panel */}
+        <div className="absolute bottom-0 left-0 w-[550px] h-[550px] -translate-x-1/3 translate-y-1/3">
+          <div className="w-full h-full bg-gradient-to-tr from-green-600/10 to-transparent backdrop-blur-3xl rounded-full" />
+        </div>
+        
+        {/* Bottom Right Panel */}
+        <div className="absolute bottom-0 right-0 w-[650px] h-[650px] translate-x-1/2 translate-y-1/2">
+          <div className="w-full h-full bg-gradient-to-tl from-green-500/10 to-transparent backdrop-blur-3xl rounded-full" />
+        </div>
+
+        {/* Center Glow */}
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[400px]">
+          <div className="w-full h-full bg-green-500/5 blur-3xl rounded-full" />
+        </div>
+      </div>
+
+      {/* Subtle Grid Overlay */}
+      <div 
+        className="absolute inset-0 opacity-[0.02]"
+        style={{
+          backgroundImage: `
+            linear-gradient(to right, #22c55e 1px, transparent 1px),
+            linear-gradient(to bottom, #22c55e 1px, transparent 1px)
+          `,
+          backgroundSize: '100px 100px',
+        }}
+      />
+
+      <div className="container mx-auto px-6 relative z-10" ref={ref}>
+        {/* Header */}
         <motion.div
-          className="text-center mb-16"
-          {...optimizedVariants.slideUp}
+          className="text-center mb-16 lg:mb-20"
+          initial={{ opacity: 0, y: 30 }}
+          animate={inView ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.8 }}
         >
-          <h2 className="text-4xl lg:text-6xl font-bold text-white mb-6">
+          <motion.h2 
+            className="text-4xl lg:text-6xl font-bold text-white mb-4 tracking-tight"
+            initial={{ opacity: 0, scale: 0.9 }}
+            animate={inView ? { opacity: 1, scale: 1 } : {}}
+            transition={{ duration: 0.8, delay: 0.2 }}
+          >
             Resultados que{' '}
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-green-400 to-green-600">
-              Importam
+              Transformam
             </span>
-          </h2>
-          <p className="text-xl text-white/70 max-w-2xl mx-auto">
-            Design que move. Código que estrutura. Performance que converte.
-          </p>
+          </motion.h2>
         </motion.div>
 
-        <div className="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto">
-          <BentoCard
-            title="Performance"
-            subtitle="LCP < 2.5s"
-            description="Sites otimizados que carregam instantaneamente e mantêm seus usuários engajados desde o primeiro clique."
-            animationType="progress"
-            delay={0}
-          />
-          
-          <BentoCard
-            title="Design Premium"
-            subtitle="Experiência que converte"
-            description="Interface moderna e intuitiva que transmite confiança e guia naturalmente seus visitantes à conversão."
-            animationType="stars"
-            delay={0.2}
-          />
-          
-          <BentoCard
-            title="Conversão"
-            subtitle="+240% em 6 meses"
-            description="Crescimento real e mensurável nos resultados dos nossos clientes através de estratégias comprovadas."
-            animationType="chart"
-            delay={0.4}
-          />
-          
-          <BentoCard
-            title="Autoridade Digital"
-            subtitle="Sites que geram confiança"
-            description="Presença online que posiciona sua marca como líder no mercado e gera resultado real."
-            animationType="energy"
-            delay={0.6}
-          />
+        {/* Stats Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 lg:gap-16 max-w-7xl mx-auto">
+          {stats.map((stat, index) => (
+            <motion.div
+              key={index}
+              className="relative group"
+              initial={{ opacity: 0, y: 50 }}
+              animate={inView ? { opacity: 1, y: 0 } : {}}
+              transition={{ duration: 0.8, delay: 0.4 + index * 0.1 }}
+            >
+              {/* Vertical line */}
+              <div className="absolute left-0 top-0 w-px h-full bg-gradient-to-b from-green-500/50 via-green-500/20 to-transparent" />
+              
+              <div className="pl-8">
+                {/* Number */}
+                <div className="mb-4 overflow-hidden">
+                  <motion.div
+                    className="flex items-start"
+                    initial={{ y: 100 }}
+                    animate={inView ? { y: 0 } : {}}
+                    transition={{ duration: 1, delay: 0.6 + index * 0.1, type: "spring" }}
+                  >
+                    <span className="text-7xl lg:text-8xl font-bold text-transparent bg-clip-text bg-gradient-to-b from-white to-white/40">
+                      {stat.number}
+                    </span>
+                    <span className="text-4xl lg:text-5xl font-bold text-green-400 mt-2">
+                      {stat.suffix}
+                    </span>
+                  </motion.div>
+                </div>
+
+                {/* Label */}
+                <motion.h3
+                  className="text-xl lg:text-2xl font-semibold text-white mb-2"
+                  initial={{ opacity: 0 }}
+                  animate={inView ? { opacity: 1 } : {}}
+                  transition={{ duration: 0.6, delay: 0.8 + index * 0.1 }}
+                >
+                  {stat.label}
+                </motion.h3>
+
+                {/* Sublabel */}
+                <motion.p
+                  className="text-white/50 text-sm"
+                  initial={{ opacity: 0 }}
+                  animate={inView ? { opacity: 1 } : {}}
+                  transition={{ duration: 0.6, delay: 1 + index * 0.1 }}
+                >
+                  {stat.sublabel}
+                </motion.p>
+
+                {/* Hover line */}
+                <motion.div
+                  className="h-1 bg-gradient-to-r from-green-400 to-transparent mt-6 rounded-full"
+                  initial={{ width: 0 }}
+                  whileInView={{ width: '100%' }}
+                  transition={{ duration: 1, delay: 1.2 + index * 0.1 }}
+                />
+              </div>
+            </motion.div>
+          ))}
         </div>
+
+        {/* Bottom Text */}
+        <motion.div
+          className="text-center mt-16"
+          initial={{ opacity: 0 }}
+          animate={inView ? { opacity: 1 } : {}}
+          transition={{ duration: 0.8, delay: 1.5 }}
+        >
+          <p className="text-white/60 max-w-2xl mx-auto leading-relaxed">
+            Cada número representa horas de trabalho dedicado, estratégias testadas e 
+            <span className="text-green-400"> resultados reais</span> que impulsionam negócios.
+          </p>
+        </motion.div>
       </div>
     </section>
   );

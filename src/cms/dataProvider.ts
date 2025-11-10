@@ -127,7 +127,7 @@ export const dataProvider: DataProvider = {
     // Auto-commit
     await autoCommit(`Remover ${resource}: ID ${params.id}`);
     
-    return { data: params.previousData };
+    return { data: params.previousData as any };
   },
 
   deleteMany: async () => {

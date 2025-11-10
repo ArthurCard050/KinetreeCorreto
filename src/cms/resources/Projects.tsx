@@ -1,4 +1,3 @@
-import React from 'react';
 import {
   List,
   Datagrid,
@@ -16,8 +15,6 @@ import {
   SelectInput,
   ArrayInput,
   SimpleFormIterator,
-  ImageField,
-  ImageInput,
   required,
 } from 'react-admin';
 

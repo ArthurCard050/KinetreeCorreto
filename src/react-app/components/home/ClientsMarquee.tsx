@@ -19,16 +19,13 @@ function ClientLogo({ name }: ClientLogoProps) {
 
 export default function ClientsMarquee() {
   const clients = [
-    'TechStore',
-    'HealthCare Pro',
-    'EduFlow',
-    'FoodHub',
-    'RealEstate Plus',
-    'FitnessPro',
-    'StyleHub',
-    'FinanceFlow',
-    'TravelMax',
-    'AutoPro'
+    'Anacli',
+    'Saxias',
+    'BaixeArquivos',
+    'Clila',
+    'SoftHive',
+    'Cicatribio',
+    'SOSChaveiros',
   ];
 
   return (

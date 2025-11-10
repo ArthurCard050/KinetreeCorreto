@@ -1,5 +1,4 @@
 import { motion } from 'framer-motion';
-import { Sparkles } from 'lucide-react';
 
 export default function ProjectsHero() {
   return (
@@ -29,16 +28,6 @@ export default function ProjectsHero() {
 
       <div className="relative z-10 container mx-auto px-6 pt-32 pb-20">
         <div className="max-w-5xl mx-auto text-center">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-          >
-            <div className="inline-flex items-center space-x-2 bg-green-400/10 border border-green-400/20 rounded-full px-6 py-3 mb-8">
-              <Sparkles className="w-5 h-5 text-green-400" />
-              <span className="text-green-400 font-semibold">Nosso Portfólio</span>
-            </div>
-          </motion.div>
 
           <motion.h1
             className="text-5xl lg:text-7xl font-bold text-white mb-8 leading-tight"

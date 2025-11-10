@@ -1,81 +1,139 @@
 import { motion } from 'framer-motion';
-import { useInView } from 'react-intersection-observer';
-import { useEffect, useState } from 'react';
+import { CalendarIcon, FileTextIcon } from "@radix-ui/react-icons";
+import { ListChecks, Share2Icon } from "lucide-react";
+import { cn } from '@/lib/utils';
+import AnimatedBeamMultipleOutputDemo from '@/react-app/components/ui/animated-beam-demo';
+import AnimatedListDemo from '@/react-app/components/ui/animated-list-demo';
+import { BentoCard, BentoGrid } from '@/react-app/components/ui/bento-grid';
+import { Marquee } from '@/react-app/components/ui/marquee';
 
-interface MetricCardProps {
-  title: string;
-  value: string;
-  description: string;
-  animationType: 'progress' | 'stars' | 'chart';
-}
+const files = [
+  {
+    name: "E-commerce Premium",
+    body: "Plataforma completa com checkout otimizado, aumentando conversões em 45% nos primeiros 3 meses.",
+  },
+  {
+    name: "Portal Corporativo",
+    body: "Sistema de gestão integrado com dashboard analytics e automações que reduziram processos manuais em 60%.",
+  },
+  {
+    name: "Landing Page SaaS",
+    body: "Design estratégico focado em conversão, gerando 200+ leads qualificados mensalmente.",
+  },
+  {
+    name: "App Mobile Fitness",
+    body: "Aplicativo híbrido com gamificação e integração de wearables, 4.8★ nas lojas.",
+  },
+  {
+    name: "Marketplace B2B",
+    body: "Plataforma de negociação com sistema de leilões, conectando 500+ empresas do setor.",
+  },
+];
 
-function MetricCard({ title, value, description, animationType }: MetricCardProps) {
-  const [ref, inView] = useInView({ threshold: 0.3 });
-  const [animated, setAnimated] = useState(false);
-
-  useEffect(() => {
-    if (inView && !animated) {
-      setAnimated(true);
-    }
-  }, [inView, animated]);
-
-  return (
-    <motion.div
-      ref={ref}
-      className="bg-white/10 backdrop-blur-md border border-white/20 rounded-2xl p-6 hover:bg-white/15 transition-all duration-300"
-      initial={{ opacity: 0, y: 20 }}
-      animate={inView ? { opacity: 1, y: 0 } : {}}
-      transition={{ duration: 0.3 }}
-      whileHover={{ scale: 1.02, boxShadow: "0 0 30px rgba(34, 197, 94, 0.2)" }}
-    >
-      <div className="text-2xl font-bold text-white mb-2">{value}</div>
-      <div className="text-green-400 font-semibold mb-2">{title}</div>
-      <div className="text-white/70 text-sm">{description}</div>
-      
-      {animationType === 'progress' && (
-        <div className="mt-4 w-full bg-white/20 rounded-full h-2">
-          <motion.div
-            className="h-2 bg-gradient-to-r from-green-500 to-green-400 rounded-full"
-            initial={{ width: 0 }}
-            animate={animated ? { width: '85%' } : {}}
-            transition={{ duration: 1.5, delay: 0.5 }}
-          />
+const features = [
+  {
+    Icon: FileTextIcon,
+    name: "Projetos Entregues",
+    description: "Portfólio de projetos que transformaram negócios.",
+    href: "/projetos",
+    cta: "Ver portfólio",
+    className: "col-span-3 lg:col-span-1",
+    background: (
+      <Marquee
+        pauseOnHover
+        className="absolute top-10 [mask-image:linear-gradient(to_top,transparent_40%,#000_100%)] [--duration:20s]"
+      >
+        {files.map((f, idx) => (
+          <figure
+            key={idx}
+            className={cn(
+              "relative w-32 cursor-pointer overflow-hidden rounded-xl border p-4",
+              "border-white/10 bg-white/5 hover:bg-white/10",
+              "transform-gpu blur-[1px] transition-all duration-300 ease-out hover:blur-none"
+            )}
+          >
+            <div className="flex flex-row items-center gap-2">
+              <div className="flex flex-col">
+                <figcaption className="text-sm font-medium text-white">
+                  {f.name}
+                </figcaption>
+              </div>
+            </div>
+            <blockquote className="mt-2 text-xs text-white/70">{f.body}</blockquote>
+          </figure>
+        ))}
+      </Marquee>
+    ),
+  },
+  {
+    Icon: ListChecks,
+    name: "Processo Organizado",
+    description: "Metodologia clara com etapas bem definidas.",
+    href: "/sobre",
+    cta: "Conheça o processo",
+    className: "col-span-3 lg:col-span-2",
+    background: (
+      <AnimatedListDemo className="absolute top-4 right-2 h-[300px] w-full scale-75 border-none [mask-image:linear-gradient(to_top,transparent_10%,#000_100%)] transition-all duration-300 ease-out group-hover:scale-90" />
+    ),
+  },
+  {
+    Icon: Share2Icon,
+    name: "Ecossistema Integrado",
+    description: "Conectamos todas as ferramentas do seu negócio.",
+    href: "/#servicos",
+    cta: "Ver serviços",
+    className: "col-span-3 lg:col-span-2",
+    background: (
+      <AnimatedBeamMultipleOutputDemo className="absolute top-4 right-2 h-[300px] w-full border-none [mask-image:linear-gradient(to_top,transparent_10%,#000_100%)] transition-all duration-300 ease-out group-hover:scale-105" />
+    ),
+  },
+  {
+    Icon: CalendarIcon,
+    name: "Cronograma Transparente",
+    description: "Planejamento claro com prazos e entregas definidas.",
+    className: "col-span-3 lg:col-span-1",
+    href: "/contato",
+    cta: "Solicitar orçamento",
+    background: (
+      <div className="absolute top-10 right-0 origin-top scale-75 rounded-md border border-white/10 bg-white/5 backdrop-blur-sm p-4 [mask-image:linear-gradient(to_top,transparent_40%,#000_100%)] transition-all duration-300 ease-out group-hover:scale-90">
+        <div className="space-y-2">
+          <div className="flex items-center justify-between text-white/80 text-xs mb-3">
+            <span className="font-semibold">Dezembro 2025</span>
+          </div>
+          <div className="grid grid-cols-7 gap-1 text-center text-[10px] text-white/60 mb-2">
+            <div>D</div>
+            <div>S</div>
+            <div>T</div>
+            <div>Q</div>
+            <div>Q</div>
+            <div>S</div>
+            <div>S</div>
+          </div>
+          <div className="grid grid-cols-7 gap-1 text-center text-[10px]">
+            {[...Array(35)].map((_, i) => {
+              const day = i - 2;
+              const isCurrentDay = day === 10;
+              const hasEvent = [5, 10, 15, 20, 25].includes(day);
+              return (
+                <div
+                  key={i}
+                  className={cn(
+                    "aspect-square flex items-center justify-center rounded",
+                    day > 0 && day <= 30 ? "text-white/70" : "text-white/20",
+                    isCurrentDay && "bg-green-500 text-white font-bold",
+                    hasEvent && !isCurrentDay && "bg-green-500/20 text-green-400"
+                  )}
+                >
+                  {day > 0 && day <= 30 ? day : ""}
+                </div>
+              );
+            })}
+          </div>
         </div>
-      )}
-      
-      {animationType === 'stars' && (
-        <div className="flex mt-3">
-          {[...Array(5)].map((_, i) => (
-            <motion.div
-              key={i}
-              initial={{ scale: 0, rotate: 180 }}
-              animate={animated ? { scale: 1, rotate: 0 } : {}}
-              transition={{ duration: 0.3, delay: 0.5 + i * 0.1 }}
-            >
-              <svg className="w-5 h-5 text-green-400 fill-current" viewBox="0 0 20 20">
-                <path d="M10 15l-5.878 3.09 1.123-6.545L0 6.91l6.564-.955L10 0l3.436 5.955L20 6.91l-5.245 4.635L15.878 18z"/>
-              </svg>
-            </motion.div>
-          ))}
-        </div>
-      )}
-      
-      {animationType === 'chart' && (
-        <div className="flex items-end space-x-1 mt-4 h-8">
-          {[40, 60, 80, 100, 85].map((height, i) => (
-            <motion.div
-              key={i}
-              className="bg-green-400 rounded-t flex-1"
-              initial={{ height: 0 }}
-              animate={animated ? { height: `${height}%` } : {}}
-              transition={{ duration: 0.8, delay: 0.5 + i * 0.1 }}
-            />
-          ))}
-        </div>
-      )}
-    </motion.div>
-  );
-}
+      </div>
+    ),
+  },
+];
 
 export default function Hero() {
   return (
@@ -103,7 +161,7 @@ export default function Hero() {
         ))}
       </div>
 
-      <div className="relative z-10 container mx-auto px-6 pt-32 pb-20 md:pt-40 md:pb-32 lg:pt-48 lg:pb-40 min-h-screen flex items-center">
+      <div className="relative z-10 container mx-auto px-6 py-20 md:py-24 lg:py-28 min-h-screen flex items-center">
         <div className="grid lg:grid-cols-2 gap-12 items-center">
           <div>
             <motion.h1
@@ -158,26 +216,17 @@ export default function Hero() {
             </motion.div>
           </div>
           
-          <div className="space-y-6">
-            <MetricCard
-              title="Performance"
-              value="LCP < 2.5s"
-              description="Performance é a nova estética"
-              animationType="progress"
-            />
-            <MetricCard
-              title="Design Premium"
-              value="Experiência que converte"
-              description="Sites que geram confiança"
-              animationType="stars"
-            />
-            <MetricCard
-              title="Conversão"
-              value="+240% em 6 meses"
-              description="Resultado real comprovado"
-              animationType="chart"
-            />
-          </div>
+          <motion.div
+            initial={{ opacity: 0, scale: 0.9 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.8, delay: 0.4 }}
+          >
+            <BentoGrid>
+              {features.map((feature, idx) => (
+                <BentoCard key={idx} {...feature} />
+              ))}
+            </BentoGrid>
+          </motion.div>
         </div>
       </div>
     </section>

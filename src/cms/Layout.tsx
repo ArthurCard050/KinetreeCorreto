@@ -1,4 +1,3 @@
-import React from 'react';
 import { Layout as RALayout, AppBar } from 'react-admin';
 import { Typography } from '@mui/material';
 
