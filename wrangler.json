@@ -1,7 +1,6 @@
 {
   "$schema": "node_modules/wrangler/config-schema.json",
   "name": "019a0921-ac50-79bf-abcd-13a2a19fa709",
-  "main": "./src/worker/index.ts",
   "compatibility_date": "2025-06-17",
   "compatibility_flags": ["nodejs_compat"],
   "observability": {
@@ -9,10 +8,6 @@
   },
   "upload_source_maps": true,
   "pages_build_output_dir": "dist",
-  "assets": {
-    "directory": "dist",
-    "not_found_handling": "single-page-application"
-  },
   "d1_databases": [
     {
       "binding": "DB",
