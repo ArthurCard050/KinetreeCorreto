@@ -8,7 +8,9 @@
     "enabled": true
   },
   "upload_source_maps": true,
+  "pages_build_output_dir": "dist",
   "assets": {
+    "directory": "dist",
     "not_found_handling": "single-page-application"
   },
   "d1_databases": [
