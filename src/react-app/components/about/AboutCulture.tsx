@@ -3,7 +3,7 @@ import { optimizedVariants } from '../../hooks/useOptimizedAnimation';
 
 export default function AboutCulture() {
   return (
-    <section className="py-20 bg-gradient-to-b from-gray-900 to-black">
+    <section id="equipe" className="py-20 bg-gradient-to-b from-gray-900 to-black">
       <div className="container mx-auto px-6">
         {/* Text Section - Smaller Container */}
         <div className="max-w-4xl mx-auto text-center">

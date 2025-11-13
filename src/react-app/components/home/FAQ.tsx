@@ -50,7 +50,7 @@ export default function ContactFAQ() {
   const faqItems = [
     {
       question: "Quanto tempo leva para desenvolver um site?",
-      answer: "Depende da complexidade do projeto. Em média, sites institucionais levam de 2 a 4 semanas. Projetos maiores, como e-commerces e web apps, podem exigir prazos personalizados."
+      answer: "Depende da complexidade do projeto. Em média, sites institucionais levam de 1 a 2 semanas. Projetos maiores, como e-commerces e web apps, podem exigir prazos personalizados."
     },
     {
       question: "Vocês atendem clientes de fora do Brasil?",

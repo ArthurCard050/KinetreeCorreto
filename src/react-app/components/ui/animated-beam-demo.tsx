@@ -1,4 +1,4 @@
-import { forwardRef, useRef } from "react";
+import { forwardRef, useRef, useState, useEffect } from "react";
 import { cn } from "@/lib/utils";
 import { AnimatedBeam } from "@/react-app/components/ui/animated-beam";
 import { Code2, Database, Globe, Smartphone, Zap, Rocket, TreePine } from "lucide-react";
@@ -27,6 +27,20 @@ export default function AnimatedBeamMultipleOutputDemo({
 }: {
   className?: string;
 }) {
+  // Estado para garantir que só renderiza após o CSS se estabilizar
+  const [isClient, setIsClient] = useState(false);
+
+  // Effect que só roda no navegador, após a montagem inicial
+  // Espera a animação do Hero.tsx terminar (0.4s delay + 0.8s duration = 1.2s)
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setIsClient(true);
+    }, 1300); // 1.3 segundos de margem de segurança
+
+    // Limpa o timer se o componente desmontar
+    return () => clearTimeout(timer);
+  }, []);
+
   const containerRef = useRef<HTMLDivElement>(null);
   const div1Ref = useRef<HTMLDivElement>(null);
   const div2Ref = useRef<HTMLDivElement>(null);
@@ -35,6 +49,11 @@ export default function AnimatedBeamMultipleOutputDemo({
   const div5Ref = useRef<HTMLDivElement>(null);
   const div6Ref = useRef<HTMLDivElement>(null);
   const div7Ref = useRef<HTMLDivElement>(null);
+
+  // Não renderiza nada no servidor ou na primeira pintura
+  if (!isClient) {
+    return null;
+  }
 
   return (
     <div
@@ -80,7 +99,7 @@ export default function AnimatedBeamMultipleOutputDemo({
         toRef={div6Ref}
         duration={3}
         gradientStartColor="#22c55e"
-        gradientStopColor="#16a34a"
+        gradientStopColor="#2BB32A"
       />
       <AnimatedBeam
         containerRef={containerRef}
@@ -88,7 +107,7 @@ export default function AnimatedBeamMultipleOutputDemo({
         toRef={div6Ref}
         duration={3}
         gradientStartColor="#22c55e"
-        gradientStopColor="#16a34a"
+        gradientStopColor="#2BB32A"
       />
       <AnimatedBeam
         containerRef={containerRef}
@@ -96,7 +115,7 @@ export default function AnimatedBeamMultipleOutputDemo({
         toRef={div6Ref}
         duration={3}
         gradientStartColor="#22c55e"
-        gradientStopColor="#16a34a"
+        gradientStopColor="#2BB32A"
       />
       <AnimatedBeam
         containerRef={containerRef}
@@ -104,7 +123,7 @@ export default function AnimatedBeamMultipleOutputDemo({
         toRef={div6Ref}
         duration={3}
         gradientStartColor="#22c55e"
-        gradientStopColor="#16a34a"
+        gradientStopColor="#2BB32A"
       />
       <AnimatedBeam
         containerRef={containerRef}
@@ -112,7 +131,7 @@ export default function AnimatedBeamMultipleOutputDemo({
         toRef={div6Ref}
         duration={3}
         gradientStartColor="#22c55e"
-        gradientStopColor="#16a34a"
+        gradientStopColor="#2BB32A"
       />
       <AnimatedBeam
         containerRef={containerRef}
@@ -120,7 +139,7 @@ export default function AnimatedBeamMultipleOutputDemo({
         toRef={div7Ref}
         duration={3}
         gradientStartColor="#22c55e"
-        gradientStopColor="#16a34a"
+        gradientStopColor="#2BB32A"
       />
     </div>
   );

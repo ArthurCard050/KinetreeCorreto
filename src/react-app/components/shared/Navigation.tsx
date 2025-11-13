@@ -1,7 +1,7 @@
 import { motion, useScroll, useTransform } from 'framer-motion';
 import { useState } from 'react';
-import { Menu, X } from 'lucide-react';
 import { useLocation, useNavigate } from 'react-router';
+import { MessageCircle } from 'lucide-react';
 import Logo from './Logo';
 
 export default function Navigation() {
@@ -108,21 +108,41 @@ export default function Navigation() {
               </div>
               
               {/* Desktop CTA Button */}
-              <motion.button
-                className="hidden md:block bg-green-500 hover:bg-green-400 text-black px-6 py-2 rounded-full font-semibold transition-colors duration-200"
+              <motion.a
+                href="https://wa.me/5561999499035?text=Olá!%20Gostaria%20de%20solicitar%20um%20orçamento."
+                target="_blank"
+                rel="noopener noreferrer"
+                className="hidden md:flex items-center gap-2 bg-green-500 hover:bg-green-400 text-black px-6 py-2 rounded-full font-semibold transition-colors duration-200"
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
               >
+                <MessageCircle className="w-4 h-4" />
                 Solicitar Orçamento
-              </motion.button>
+              </motion.a>
 
               {/* Mobile Menu Button */}
               <motion.button
-                className="md:hidden text-white p-2 hover:bg-white/10 rounded-full transition-colors duration-200"
+                className="md:hidden text-white p-2 hover:bg-white/10 rounded-full transition-colors duration-200 relative w-10 h-10 flex items-center justify-center"
                 whileTap={{ scale: 0.95 }}
                 onClick={toggleMobileMenu}
               >
-                {isMobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+                <div className="w-6 h-5 flex flex-col justify-center items-center">
+                  <motion.span
+                    className="w-6 h-0.5 bg-white block mb-1.5"
+                    animate={isMobileMenuOpen ? { rotate: 45, y: 8 } : { rotate: 0, y: 0 }}
+                    transition={{ duration: 0.3 }}
+                  />
+                  <motion.span
+                    className="w-6 h-0.5 bg-white block mb-1.5"
+                    animate={isMobileMenuOpen ? { opacity: 0 } : { opacity: 1 }}
+                    transition={{ duration: 0.3 }}
+                  />
+                  <motion.span
+                    className="w-6 h-0.5 bg-white block"
+                    animate={isMobileMenuOpen ? { rotate: -45, y: -8 } : { rotate: 0, y: 0 }}
+                    transition={{ duration: 0.3 }}
+                  />
+                </div>
               </motion.button>
             </div>
           </motion.nav>
@@ -179,15 +199,19 @@ export default function Navigation() {
             >
               Contato
             </motion.a>
-            <motion.button
-              className="bg-green-500 hover:bg-green-400 text-black px-8 py-3 rounded-full font-semibold text-lg transition-colors duration-200 mt-4"
+            <motion.a
+              href="https://wa.me/5561999499035?text=Olá!%20Gostaria%20de%20solicitar%20um%20orçamento."
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center gap-2 bg-green-500 hover:bg-green-400 text-black px-8 py-3 rounded-full font-semibold text-lg transition-colors duration-200 mt-4"
               initial={{ y: 20, opacity: 0 }}
               animate={{ y: 0, opacity: 1 }}
               transition={{ duration: 0.2, delay: 0.4 }}
               onClick={toggleMobileMenu}
             >
+              <MessageCircle className="w-5 h-5" />
               Solicitar Orçamento
-            </motion.button>
+            </motion.a>
           </div>
         </motion.div>
       )}

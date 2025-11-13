@@ -29,10 +29,10 @@ export default function ClientsMarquee() {
   ];
 
   return (
-    <section className="relative py-20 px-6 overflow-hidden">
+    <section className="relative py-20 overflow-hidden w-full">
       <div className="absolute inset-0 bg-gradient-to-br from-white/10 via-green-500/5 to-white/10" />
 
-      <div className="relative z-10 max-w-7xl mx-auto mb-12">
+      <div className="relative z-10 max-w-7xl mx-auto mb-12 px-6">
         <motion.div
           className="text-center"
           {...optimizedVariants.slideUp}
@@ -49,7 +49,7 @@ export default function ClientsMarquee() {
         </motion.div>
       </div>
 
-      <div className="relative z-10">
+      <div className="relative z-10 w-full">
         <div className="flex overflow-hidden">
           <motion.div
             className="flex whitespace-nowrap"

@@ -1,4 +1,4 @@
-import { motion, AnimatePresence } from 'framer-motion';
+import { motion } from 'framer-motion';
 import { useState } from 'react';
 import { useScrollLock } from '../../hooks/useScrollLock';
 import { optimizedVariants } from '../../hooks/useOptimizedAnimation';
@@ -105,49 +105,21 @@ function ServiceModal({ service, isOpen, onClose }: ServiceModalProps) {
 
   if (!service) return null;
 
-  return (
-    <AnimatePresence>
-      {isOpen && (
-        <>
-          {/* Backdrop */}
-          <motion.div
-            className="fixed inset-0 bg-black/90 backdrop-blur-sm z-50 overflow-hidden"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            onClick={onClose}
-            onWheel={(e) => e.preventDefault()}
-            onTouchMove={(e) => e.preventDefault()}
-          />
+  if (!isOpen) return null;
 
-          {/* Modal */}
-          <motion.div
-            className="fixed inset-2 sm:inset-4 md:inset-8 lg:inset-16 z-50 flex items-center justify-center"
-            style={{
-              willChange: 'transform, opacity',
-              backfaceVisibility: 'hidden'
-            }}
-            initial={{
-              opacity: 0,
-              scale: 0.95,
-              y: 20
-            }}
-            animate={{
-              opacity: 1,
-              scale: 1,
-              y: 0
-            }}
-            exit={{
-              opacity: 0,
-              scale: 0.95,
-              y: 20
-            }}
-            transition={{
-              duration: 0.3,
-              ease: [0.25, 0.46, 0.45, 0.94]
-            }}
-            onClick={(e) => e.stopPropagation()}
-          >
+  return (
+    <>
+      {/* Backdrop */}
+      <div
+        className="fixed inset-0 bg-black/90 backdrop-blur-sm z-50 overflow-hidden"
+        onClick={onClose}
+      />
+
+      {/* Modal */}
+      <div
+        className="fixed inset-2 sm:inset-4 md:inset-8 lg:inset-16 z-50 flex items-center justify-center"
+        onClick={(e) => e.stopPropagation()}
+      >
             {/* Desktop Layout */}
             <div
               className="hidden sm:block relative bg-gradient-to-br from-gray-900 to-black border border-white/20 rounded-3xl p-8 max-w-4xl w-full max-h-[90vh] overflow-y-auto"
@@ -351,10 +323,8 @@ function ServiceModal({ service, isOpen, onClose }: ServiceModalProps) {
                 </div>
               </div>
             </div>
-          </motion.div>
-        </>
-      )}
-    </AnimatePresence>
+          </div>
+    </>
   );
 }
 

@@ -7,19 +7,19 @@ export default function ContactMethods() {
     {
       icon: <MessageSquare className="w-8 h-8 text-black" />,
       title: "WhatsApp",
-      description: "Atendimento rápido e direto.",
+      description: "(61) 99949-9035",
       delay: 0
     },
     {
       icon: <Mail className="w-8 h-8 text-black" />,
       title: "E-mail",
-      description: "contato@kinetree.com.br",
+      description: "contato@kinetree.site",
       delay: 0.1
     },
     {
       icon: <MapPin className="w-8 h-8 text-black" />,
       title: "Localização",
-      description: "São Paulo – SP / Atendimento para todo o Brasil.",
+      description: "Brasília / DF",
       delay: 0.2
     },
     {

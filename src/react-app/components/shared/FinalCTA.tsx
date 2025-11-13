@@ -41,16 +41,6 @@ export default function FinalCTA() {
             {...optimizedVariants.slideUp}
             className="mb-8"
           >
-            <motion.div
-              className="inline-flex items-center space-x-2 bg-green-400/10 border border-green-400/20 rounded-full px-6 py-3 mb-8"
-              initial={{ scale: 0.9, opacity: 0 }}
-              whileInView={{ scale: 1, opacity: 1 }}
-              transition={{ duration: 0.6, delay: 0.2 }}
-              viewport={{ once: true }}
-            >
-              <Sparkles className="w-5 h-5 text-green-400" />
-              <span className="text-green-400 font-semibold">Transformação Digital</span>
-            </motion.div>
 
             <motion.h2
               className="text-5xl lg:text-7xl font-bold text-white mb-6 leading-tight"

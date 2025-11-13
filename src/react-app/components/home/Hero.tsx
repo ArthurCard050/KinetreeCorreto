@@ -95,12 +95,12 @@ const features = [
     href: "/contato",
     cta: "Solicitar orçamento",
     background: (
-      <div className="absolute top-10 right-0 origin-top scale-75 rounded-md border border-white/10 bg-white/5 backdrop-blur-sm p-4 [mask-image:linear-gradient(to_top,transparent_40%,#000_100%)] transition-all duration-300 ease-out group-hover:scale-90">
-        <div className="space-y-2">
-          <div className="flex items-center justify-between text-white/80 text-xs mb-3">
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 md:top-4 md:left-auto md:right-0 md:translate-x-0 md:translate-y-0 origin-center md:origin-top scale-110 md:scale-75 rounded-md border border-white/10 bg-white/5 backdrop-blur-sm p-6 md:p-4 [mask-image:linear-gradient(to_top,transparent_40%,#000_100%)] transition-all duration-300 ease-out group-hover:scale-[1.15] md:group-hover:scale-90">
+        <div className="space-y-3 md:space-y-2">
+          <div className="flex items-center justify-between text-white/80 text-base md:text-xs mb-4 md:mb-3">
             <span className="font-semibold">Dezembro 2025</span>
           </div>
-          <div className="grid grid-cols-7 gap-1 text-center text-[10px] text-white/60 mb-2">
+          <div className="grid grid-cols-7 gap-2 md:gap-1 text-center text-sm md:text-[10px] text-white/60 mb-3 md:mb-2">
             <div>D</div>
             <div>S</div>
             <div>T</div>
@@ -109,7 +109,7 @@ const features = [
             <div>S</div>
             <div>S</div>
           </div>
-          <div className="grid grid-cols-7 gap-1 text-center text-[10px]">
+          <div className="grid grid-cols-7 gap-2 md:gap-1 text-center text-sm md:text-[10px]">
             {[...Array(35)].map((_, i) => {
               const day = i - 2;
               const isCurrentDay = day === 10;
@@ -161,7 +161,7 @@ export default function Hero() {
         ))}
       </div>
 
-      <div className="relative z-10 container mx-auto px-6 py-20 md:py-24 lg:py-28 min-h-screen flex items-center">
+      <div className="relative z-10 container mx-auto px-6 pt-32 pb-20 md:py-24 lg:py-28 min-h-screen flex items-center">
         <div className="grid lg:grid-cols-2 gap-12 items-center">
           <div>
             <motion.h1
@@ -170,11 +170,10 @@ export default function Hero() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.4, delay: 0.1 }}
             >
-              Não criamos sites.{' '}
+              Sites que não apenas funcionam{' '}
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-green-400 to-green-600">
-                Construímos estruturas vivas
+                Evoluem <em>com você.</em>
               </span>{' '}
-              para o seu crescimento digital.
             </motion.h1>
             
             <motion.p

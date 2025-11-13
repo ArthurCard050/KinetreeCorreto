@@ -46,26 +46,26 @@ export default function BentoResults() {
         }}
       />
 
-      {/* Glass Morphism Panels */}
-      <div className="absolute inset-0 overflow-hidden pointer-events-none">
+      {/* Static Glass Morphism Panels - sem animação */}
+      <div className="absolute inset-0 overflow-hidden pointer-events-none will-change-auto">
         {/* Top Left Panel */}
         <div className="absolute top-0 left-0 w-[600px] h-[600px] -translate-x-1/2 -translate-y-1/2">
-          <div className="w-full h-full bg-gradient-to-br from-green-500/10 to-transparent backdrop-blur-3xl rounded-full" />
+          <div className="w-full h-full bg-gradient-to-br from-green-500/10 to-transparent rounded-full blur-3xl" />
         </div>
         
         {/* Top Right Panel */}
         <div className="absolute top-0 right-0 w-[500px] h-[500px] translate-x-1/3 -translate-y-1/3">
-          <div className="w-full h-full bg-gradient-to-bl from-green-400/10 to-transparent backdrop-blur-3xl rounded-full" />
+          <div className="w-full h-full bg-gradient-to-bl from-green-400/10 to-transparent rounded-full blur-3xl" />
         </div>
         
         {/* Bottom Left Panel */}
         <div className="absolute bottom-0 left-0 w-[550px] h-[550px] -translate-x-1/3 translate-y-1/3">
-          <div className="w-full h-full bg-gradient-to-tr from-green-600/10 to-transparent backdrop-blur-3xl rounded-full" />
+          <div className="w-full h-full bg-gradient-to-tr from-green-600/10 to-transparent rounded-full blur-3xl" />
         </div>
         
         {/* Bottom Right Panel */}
         <div className="absolute bottom-0 right-0 w-[650px] h-[650px] translate-x-1/2 translate-y-1/2">
-          <div className="w-full h-full bg-gradient-to-tl from-green-500/10 to-transparent backdrop-blur-3xl rounded-full" />
+          <div className="w-full h-full bg-gradient-to-tl from-green-500/10 to-transparent rounded-full blur-3xl" />
         </div>
 
         {/* Center Glow */}

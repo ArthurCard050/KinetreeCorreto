@@ -1,37 +1,75 @@
-import { motion } from 'framer-motion';
-import { Mail, Phone, MapPin, Instagram, Linkedin, Twitter, Github } from 'lucide-react';
+import { Mail, Phone, MapPin, Instagram, Linkedin, Twitter, LucideIcon } from 'lucide-react';
+import { Link } from 'react-router-dom';
 import Logo from './Logo';
-import { optimizedVariants } from '../../hooks/useOptimizedAnimation';
+
+interface FooterLink {
+  name: string;
+  href: string;
+  icon?: LucideIcon;
+  onClick?: (e: React.MouseEvent) => void;
+}
 
 export default function Footer() {
   const currentYear = new Date().getFullYear();
 
-  const footerSections = [
+  const handleServicesClick = (e: React.MouseEvent) => {
+    e.preventDefault();
+    const servicesSection = document.getElementById('servicos');
+    if (servicesSection) {
+      servicesSection.scrollIntoView({ 
+        behavior: 'smooth',
+        block: 'start'
+      });
+    } else {
+      window.location.href = '/#servicos';
+    }
+  };
+
+  const handleTeamClick = (e: React.MouseEvent) => {
+    e.preventDefault();
+    
+    // Verifica se já está na página "sobre"
+    if (window.location.pathname === '/sobre') {
+      // Se já está na página, apenas faz scroll para a seção
+      const teamSection = document.getElementById('equipe');
+      if (teamSection) {
+        teamSection.scrollIntoView({ 
+          behavior: 'smooth',
+          block: 'start'
+        });
+      }
+    } else {
+      // Se está em outra página, navega para sobre e depois faz scroll
+      window.location.href = '/sobre#equipe';
+    }
+  };
+
+  const footerSections: { title: string; links: FooterLink[] }[] = [
     {
       title: "Sobre",
       links: [
-        { name: "Nossa História", href: "#" },
-        { name: "Equipe", href: "#" },
-        { name: "Carreira", href: "#" },
+        { name: "Nossa História", href: "/sobre" },
+        { name: "Equipe", href: "/sobre#equipe", onClick: handleTeamClick },
+        { name: "Carreira", href: "/contato" },
         { name: "Blog", href: "#" }
       ]
     },
     {
       title: "Serviços",
       links: [
-        { name: "Desenvolvimento Web", href: "#" },
-        { name: "Design Estratégico", href: "#" },
-        { name: "Performance", href: "#" },
-        { name: "Consultoria", href: "#" }
+        { name: "Desenvolvimento Web", href: "#servicos", onClick: handleServicesClick },
+        { name: "Design Estratégico", href: "#servicos", onClick: handleServicesClick },
+        { name: "Performance", href: "#servicos", onClick: handleServicesClick },
+        { name: "Consultoria", href: "#servicos", onClick: handleServicesClick }
       ]
     },
     {
       title: "Contato",
       links: [
-        { name: "contato@kinetree.com", href: "mailto:contato@kinetree.com", icon: Mail },
-        { name: "+55 (11) 99999-9999", href: "tel:+5511999999999", icon: Phone },
-        { name: "São Paulo, SP", href: "#", icon: MapPin },
-        { name: "Solicitar Orçamento", href: "#" }
+        { name: "contato@kinetree.site", href: "mailto:contato@kinetree.site", icon: Mail },
+        { name: "+55 (61) 99949-9035", href: "tel:+5561999499035", icon: Phone },
+        { name: "Brasília, DF", href: "#", icon: MapPin },
+        { name: "Solicitar Orçamento", href: "https://wa.me/5561999499035?text=Olá!%20Gostaria%20de%20solicitar%20um%20orçamento." }
       ]
     }
   ];
@@ -39,8 +77,7 @@ export default function Footer() {
   const socialLinks = [
     { icon: Instagram, href: "https://instagram.com/kinetree", name: "Instagram" },
     { icon: Linkedin, href: "https://linkedin.com/company/kinetree", name: "LinkedIn" },
-    { icon: Twitter, href: "https://twitter.com/kinetree", name: "Twitter" },
-    { icon: Github, href: "https://github.com/kinetree", name: "GitHub" }
+    { icon: Twitter, href: "https://twitter.com/kinetree", name: "Twitter" }
   ];
 
   return (
@@ -48,10 +85,7 @@ export default function Footer() {
       <div className="container mx-auto px-6 py-16">
         <div className="grid md:grid-cols-4 gap-12">
           {/* Logo and description */}
-          <motion.div
-            className="md:col-span-1"
-            {...optimizedVariants.slideUp}
-          >
+          <div className="md:col-span-1">
             <Logo />
             <p className="text-white/70 leading-relaxed mb-6">
               Construímos estruturas vivas para o seu crescimento digital. Design que move, código que estrutura.
@@ -59,88 +93,65 @@ export default function Footer() {
             
             {/* Social links */}
             <div className="flex space-x-4">
-              {socialLinks.map((social, index) => (
-                <motion.a
+              {socialLinks.map((social) => (
+                <a
                   key={social.name}
                   href={social.href}
                   className="w-10 h-10 bg-white/10 rounded-full flex items-center justify-center text-white/70 hover:text-green-400 hover:bg-green-400/10 transition-all duration-300"
-                  whileHover={{ scale: 1.1, y: -2 }}
-                  whileTap={{ scale: 0.95 }}
-                  initial={{ opacity: 0, scale: 0 }}
-                  whileInView={{ opacity: 1, scale: 1 }}
-                  transition={{ duration: 0.4, delay: 0.6 + index * 0.1 }}
-                  viewport={{ once: true }}
                 >
                   <social.icon className="w-5 h-5" />
-                </motion.a>
+                </a>
               ))}
             </div>
-          </motion.div>
+          </div>
 
           {/* Footer sections */}
-          {footerSections.map((section, sectionIndex) => (
-            <motion.div
-              key={section.title}
-              {...optimizedVariants.slideUp}
-              transition={{ ...optimizedVariants.slideUp.transition, delay: sectionIndex * 0.1 }}
-            >
+          {footerSections.map((section) => (
+            <div key={section.title}>
               <h4 className="text-white font-semibold mb-6">{section.title}</h4>
               <ul className="space-y-4">
-                {section.links.map((link, linkIndex) => (
-                  <motion.li
-                    key={link.name}
-                    initial={{ opacity: 0, x: -10 }}
-                    whileInView={{ opacity: 1, x: 0 }}
-                    transition={{ duration: 0.6, delay: 0.4 + sectionIndex * 0.1 + linkIndex * 0.05 }}
-                    viewport={{ once: true }}
-                  >
-                    <motion.a
+                {section.links.map((link) => (
+                  <li key={link.name}>
+                    <a
                       href={link.href}
+                      onClick={link.onClick}
+                      target={link.href.startsWith('http') ? '_blank' : undefined}
+                      rel={link.href.startsWith('http') ? 'noopener noreferrer' : undefined}
                       className="text-white/70 hover:text-green-400 transition-colors duration-300 flex items-center space-x-2 group"
-                      whileHover={{ x: 5 }}
                     >
                       {link.icon && <link.icon className="w-4 h-4" />}
                       <span className="group-hover:underline">{link.name}</span>
-                    </motion.a>
-                  </motion.li>
+                    </a>
+                  </li>
                 ))}
               </ul>
-            </motion.div>
+            </div>
           ))}
         </div>
 
         {/* Bottom section */}
-        <motion.div
-          className="border-t border-white/10 mt-16 pt-8 flex flex-col md:flex-row justify-between items-center"
-          {...optimizedVariants.slideUp}
-          transition={{ ...optimizedVariants.slideUp.transition, delay: 0.4 }}
-        >
+        <div className="border-t border-white/10 mt-16 pt-8 flex flex-col md:flex-row justify-between items-center">
           <div className="text-white/60 text-sm mb-4 md:mb-0">
-            <motion.span
-              className="cursor-pointer hover:text-green-400 transition-colors duration-300"
-              whileHover={{ scale: 1.05 }}
-            >
+            <span className="cursor-pointer hover:text-green-400 transition-colors duration-300">
               © {currentYear} Kinetree. Todos os direitos reservados.
-            </motion.span>
+            </span>
           </div>
           
           <div className="flex space-x-6 text-sm">
-            {['Política de Privacidade', 'Termos de Uso', 'Cookies'].map((item, index) => (
-              <motion.a
-                key={item}
-                href="#"
-                className="text-white/60 hover:text-green-400 transition-colors duration-300"
-                whileHover={{ y: -1 }}
-                initial={{ opacity: 0 }}
-                whileInView={{ opacity: 1 }}
-                transition={{ duration: 0.6, delay: 1 + index * 0.1 }}
-                viewport={{ once: true }}
-              >
-                {item}
-              </motion.a>
-            ))}
+            <Link
+              to="/politica-de-privacidade"
+              className="text-white/60 hover:text-green-400 transition-colors duration-300"
+            >
+              Política de Privacidade
+            </Link>
+            <Link
+              to="/termos-de-uso"
+              className="text-white/60 hover:text-green-400 transition-colors duration-300"
+            >
+              Termos de Uso
+            </Link>
           </div>
-        </motion.div>
+        </div>
       </div>
     </footer>
   );
