@@ -1,8 +1,10 @@
 backend:
-  name: test-repo
+  name: git-gateway
+  branch: main # ou master, dependendo do seu repositório
 
 # URL do site
 site_url: https://kinetreecorreto.pages.dev
+display_url: https://kinetreecorreto.pages.dev
 
 # Configuração de mídia
 media_folder: "public/uploads"
