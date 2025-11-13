@@ -51,7 +51,7 @@ export default function Footer() {
         { name: "Nossa História", href: "/sobre" },
         { name: "Equipe", href: "/sobre#equipe", onClick: handleTeamClick },
         { name: "Carreira", href: "/contato" },
-        { name: "Blog", href: "#" }
+        { name: "Blog", href: "/blog" }
       ]
     },
     {

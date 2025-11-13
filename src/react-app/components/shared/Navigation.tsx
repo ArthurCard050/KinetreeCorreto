@@ -1,24 +1,31 @@
-import { motion, useScroll, useTransform } from 'framer-motion';
-import { useState } from 'react';
+import { motion } from 'framer-motion';
+import { useState, useEffect } from 'react';
 import { useLocation, useNavigate } from 'react-router';
 import { MessageCircle } from 'lucide-react';
 import Logo from './Logo';
 
 export default function Navigation() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-  const { scrollY } = useScroll();
   const location = useLocation();
   const navigate = useNavigate();
-  
-  const backgroundColor = useTransform(
-    scrollY,
-    [0, 100],
-    ['rgba(0, 0, 0, 0.1)', 'rgba(0, 0, 0, 0.8)']
-  );
 
   const toggleMobileMenu = () => {
     setIsMobileMenuOpen(!isMobileMenuOpen);
   };
+
+  // Desabilitar scroll quando menu mobile estiver aberto
+  useEffect(() => {
+    if (isMobileMenuOpen) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = 'unset';
+    }
+
+    // Cleanup ao desmontar
+    return () => {
+      document.body.style.overflow = 'unset';
+    };
+  }, [isMobileMenuOpen]);
 
   const handleServicesClick = (e: React.MouseEvent) => {
     e.preventDefault();
@@ -61,8 +68,8 @@ export default function Navigation() {
       >
         <div className="container mx-auto px-4 py-4">
           <motion.nav
-            className="bg-white/10 backdrop-blur-md border border-white/20 rounded-full px-6 py-3 mx-auto max-w-4xl"
-            style={{ backgroundColor }}
+            className="backdrop-blur-md border border-white/20 rounded-full px-6 py-3 mx-auto max-w-4xl"
+            style={{ backgroundColor: 'rgba(0, 0, 0, 0.8)' }}
           >
             <div className="flex items-center justify-between">
               <Logo />
@@ -96,6 +103,15 @@ export default function Navigation() {
                   Serviços
                   <div className="absolute -bottom-1 left-0 w-0 h-0.5 bg-green-400 group-hover:w-full transition-all duration-200" />
                 </motion.button>
+                <motion.a
+                  href="/blog"
+                  className="text-white/80 hover:text-white transition-colors duration-200 relative group"
+                  whileHover={{ y: -1 }}
+                  transition={{ duration: 0.2 }}
+                >
+                  Blog
+                  <div className="absolute -bottom-1 left-0 w-0 h-0.5 bg-green-400 group-hover:w-full transition-all duration-200" />
+                </motion.a>
                 <motion.a
                   href="/contato"
                   className="text-white/80 hover:text-white transition-colors duration-200 relative group"
@@ -190,11 +206,21 @@ export default function Navigation() {
               Projetos
             </motion.a>
             <motion.a
-              href="/contato"
+              href="/blog"
               className="text-white text-2xl font-semibold hover:text-green-400 transition-colors duration-200"
               initial={{ y: 20, opacity: 0 }}
               animate={{ y: 0, opacity: 1 }}
               transition={{ duration: 0.2, delay: 3 * 0.1 }}
+              onClick={toggleMobileMenu}
+            >
+              Blog
+            </motion.a>
+            <motion.a
+              href="/contato"
+              className="text-white text-2xl font-semibold hover:text-green-400 transition-colors duration-200"
+              initial={{ y: 20, opacity: 0 }}
+              animate={{ y: 0, opacity: 1 }}
+              transition={{ duration: 0.2, delay: 4 * 0.1 }}
               onClick={toggleMobileMenu}
             >
               Contato
@@ -206,7 +232,7 @@ export default function Navigation() {
               className="flex items-center gap-2 bg-green-500 hover:bg-green-400 text-black px-8 py-3 rounded-full font-semibold text-lg transition-colors duration-200 mt-4"
               initial={{ y: 20, opacity: 0 }}
               animate={{ y: 0, opacity: 1 }}
-              transition={{ duration: 0.2, delay: 0.4 }}
+              transition={{ duration: 0.2, delay: 0.5 }}
               onClick={toggleMobileMenu}
             >
               <MessageCircle className="w-5 h-5" />

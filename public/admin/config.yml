@@ -73,6 +73,29 @@ collections:
               - {label: "Depoimento em Destaque", name: "featured", widget: "boolean", default: true}
               - {label: "Ordem", name: "order", widget: "number", value_type: "int", min: 1}
 
+  # Blog
+  - name: "blog"
+    label: "📝 Blog"
+    description: "Gerencie os artigos do blog"
+    folder: "public/cms-data/blog"
+    create: true
+    slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
+    editor:
+      preview: true
+    fields:
+      - {label: "Título", name: "title", widget: "string", required: true}
+      - {label: "Slug", name: "slug", widget: "string", required: true, hint: "URL amigável (ex: como-criar-um-site)", pattern: ['^[a-z0-9]+(?:-[a-z0-9]+)*$', "Use apenas letras minúsculas, números e hífens"]}
+      - {label: "Data de Publicação", name: "date", widget: "datetime", required: true}
+      - {label: "Autor", name: "author", widget: "string", required: true, default: "Equipe Kinetree"}
+      - {label: "Imagem de Capa", name: "coverImage", widget: "image", required: true, hint: "Tamanho recomendado: 1200x675px"}
+      - {label: "Resumo", name: "excerpt", widget: "text", required: true, hint: "Breve descrição do artigo (150-200 caracteres)"}
+      - {label: "Conteúdo", name: "body", widget: "markdown", required: true, hint: "Use o editor visual para formatar: negrito, itálico, títulos, listas, links, imagens, etc.", modes: ["rich_text", "raw"]}
+      - {label: "Categoria", name: "category", widget: "select", options: ["Desenvolvimento Web", "Design", "Marketing Digital", "Tecnologia", "Dicas", "Tutoriais", "Casos de Sucesso"]}
+      - {label: "Tags", name: "tags", widget: "list", required: false, hint: "Palavras-chave do artigo (pressione Enter após cada tag)"}
+      - {label: "Publicado", name: "published", widget: "boolean", default: true}
+      - {label: "Destaque", name: "featured", widget: "boolean", default: false, hint: "Artigo em destaque na página inicial"}
+      - {label: "Tempo de Leitura (min)", name: "readTime", widget: "number", value_type: "int", min: 1, default: 5}
+
   # Configurações do Site (futuro)
   - name: "settings"
     label: "⚙️ Configurações"
