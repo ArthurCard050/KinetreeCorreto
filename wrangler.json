@@ -1,24 +1,11 @@
 {
   "$schema": "node_modules/wrangler/config-schema.json",
-  "name": "019a0921-ac50-79bf-abcd-13a2a19fa709",
+  "name": "kinetree-website",
   "compatibility_date": "2025-06-17",
   "compatibility_flags": ["nodejs_compat"],
   "observability": {
     "enabled": true
   },
   "upload_source_maps": true,
-  "pages_build_output_dir": "dist",
-  "d1_databases": [
-    {
-      "binding": "DB",
-      "database_name": "019a0921-ac50-79bf-abcd-13a2a19fa709",
-      "database_id": "019a0921-ac50-79bf-abcd-13a2a19fa709"
-    }
-  ],
-  "r2_buckets": [
-    {
-      "binding": "R2_BUCKET",
-      "bucket_name": "019a0921-ac50-79bf-abcd-13a2a19fa709"
-    }
-  ]
+  "pages_build_output_dir": "dist"
 }
